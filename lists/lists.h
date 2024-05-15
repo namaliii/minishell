@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:58:28 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:43:38 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void				print_char(char **str);
 
 t_node				*node_last(t_node *lst);
 void				node_add_back(t_node **lst, t_node *new);
-t_node				*node_new(char **cmd, char type, t_token *files);
+t_node				*node_new(char **cmd, t_token *files);
 
 #endif

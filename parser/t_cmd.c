@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:54:59 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:06:10 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:44:08 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	t_cmd(t_node **s_cmd, t_token **index, t_token **files, t_token **cmd)
 		free(i);
 	}
 	command = list_to_char(cmd);
-	new_cmd = node_new(command, 'c', *files);
+	new_cmd = node_new(command, *files);
 	node_add_back(s_cmd, new_cmd);
 	new_cmd = NULL;
 	*files = NULL;

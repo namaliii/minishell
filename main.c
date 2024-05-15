@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
+/*   Updated: 2024/05/15 11:20:35 by mfaoussi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+int	main(void)
+{
+	char	*line;
+	// t_token	*tokens;
+	// t_node	*s_cmd;
+	while (1)
+	{
+		line = readline("$ ");  // Pass NULL to readline to use the default prompt
+		if (line == NULL)
+			printf("error taking the input\n");
+		else
+		{
+			// if (check_quotes(line) == 0)
+			// {
+			// 	tokens = tokenize(line);
+			// 	parser(&tokens, &s_cmd);
+			// 	print_nodes(s_cmd);
+			// 	clean_nodes(&s_cmd);
+			// }
+			// else
+			printf("%s\n",line);
+			free(line);
+		}
+			// parsing(line);
+	}
+	return 0;
+}

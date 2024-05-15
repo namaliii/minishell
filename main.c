@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:46:54 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:43:00 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
 	char	*line;
 	t_token	*tokens;
@@ -31,6 +31,7 @@ int	main(void)
 				// print_tokens(tokens);
 				parser(&tokens, &s_cmd);
 				// print_nodes(s_cmd);
+				execute(shell, envp);
 				clean_nodes(&s_cmd);
 			}
 			else

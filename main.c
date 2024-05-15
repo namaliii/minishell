@@ -6,16 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:58:50 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:06:16 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "checks/checks.h"
-#include "lexer/lexer.h"
-#include "lists/lists.h"
-#include "libft/libft.h"
-#include "parser/parser.h"
 
 int	main(void)
 {

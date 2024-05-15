@@ -6,12 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:48:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:54:51 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:05:53 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "../lists/lists.h"
+#include "../minishell.h"
 
 /**
  * get_list_length will count how many nodes are in t_token list

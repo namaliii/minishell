@@ -6,12 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 18:21:35 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:47:45 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:03:06 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-#include "checks.h"
 
 /**
  * will check quotes and return 1 in case of not closed quotes 

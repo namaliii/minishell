@@ -6,11 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:36:07 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:52:29 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:05:42 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 void	clean_nodes(t_node **node)
 {

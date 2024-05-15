@@ -6,11 +6,10 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:07:13 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:06:58 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:05:12 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
 #include "../minishell.h"
 
 t_token	*token_last(t_token *lst)

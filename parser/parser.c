@@ -6,11 +6,10 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:14:26 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:55:41 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:05:57 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include "../minishell.h"
 
 /**

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:51:48 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:06:04 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PARSER_H
 
 # include "../minishell.h"
-# include "parser.h"
 
 void	parser(t_token **tokens, t_node **s_cmd);
 void	t_cmd(t_node **s_cmd, t_token **index, t_token **files, t_token **cmd);

@@ -3,6 +3,7 @@
 		"minishell.h": "c",
 		"libft.h": "c",
 		"lists.h": "c",
-		"parser.h": "c"
+		"parser.h": "c",
+		"lexer.h": "c"
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:46:09 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:05:07 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:04:39 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "../minishell.h"
 
 size_t	ft_strlen(const char *s)
 {

@@ -6,11 +6,10 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:31:37 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:54:10 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:05:07 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
 #include "../minishell.h"
 
 void	print_nodes(t_node *s_cmd)

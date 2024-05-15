@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:20:35 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:27:12 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ int	main(void)
 			printf("error taking the input\n");
 		else
 		{
-			// if (check_quotes(line) == 0)
-			// {
-			// 	tokens = tokenize(line);
-			// 	parser(&tokens, &s_cmd);
-			// 	print_nodes(s_cmd);
-			// 	clean_nodes(&s_cmd);
-			// }
-			// else
-			printf("%s\n",line);
+			if (check_quotes(line) == 0)
+			{
+				printf("quotes are good\n");
+				// tokens = tokenize(line);
+				// parser(&tokens, &s_cmd);
+				// print_nodes(s_cmd);
+				// clean_nodes(&s_cmd);
+			}
+			else
+				printf("quotes Error\n");
 			free(line);
 		}
 			// parsing(line);

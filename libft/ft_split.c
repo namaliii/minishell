@@ -6,11 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:48:13 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/06 12:49:11 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:05:00 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "libft.h"
 
 static char	*put(char const *str, int *index, char c)
 {

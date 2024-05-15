@@ -6,10 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:31:37 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:56:16 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:11:23 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lists.h"
 #include "../minishell.h"
 
 // void	print_nodes(t_node *s_cmd)
@@ -40,7 +41,7 @@ void	print_tokens(t_token *lst)
 	index = lst;
 	while (index)
 	{
-		printf("%s\n",index->content);
+		printf("%s   %d\n",index->content, index->type);
 		index = index->next;
 	}
 }

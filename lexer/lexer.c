@@ -6,11 +6,13 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:02:28 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:39:52 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:08:17 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "lexer.h"
+#include "../libft/libft.h"
+#include "../lists/lists.h"
 
 /**
 * tokenize - will take an input string and convert it to 

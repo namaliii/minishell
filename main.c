@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:00:21 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:01:24 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(void)
 			{
 				printf("quotes are good\n");
 				tokens = tokenize(line);
-				
+				print_tokens(tokens);
 				// parser(&tokens, &s_cmd);
 				// print_nodes(s_cmd);
 				// clean_nodes(&s_cmd);

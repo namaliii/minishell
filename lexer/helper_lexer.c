@@ -6,11 +6,13 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:02:28 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:39:41 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:06:35 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lexer.h"
 #include "../minishell.h"
+#include "../libft/libft.h"
 
 /**
  * skip_quote_token will take an input and a position i

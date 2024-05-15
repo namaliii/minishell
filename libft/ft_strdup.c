@@ -6,11 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 09:08:37 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/13 09:09:41 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:05:04 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *str)
 {

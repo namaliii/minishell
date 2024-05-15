@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:42:47 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:41:06 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,22 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
+
+// typedef struct s_heredoc
+// {
+// 	char				*limiter;
+// 	bool				expand;
+// 	struct s_heredoc	*next;
+// }				t_heredoc;
+
+typedef struct s_shell
+{
+	t_node			*lst;
+	// t_heredoc		*heredoc;
+	// char			*last_hd_name;
+	// int				fd_last_hd;
+	char			**my_env;
+	int				exit_code;
+}	t_shell;
 
 #endif

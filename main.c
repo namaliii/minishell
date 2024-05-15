@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:27:12 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:53:38 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	char	*line;
-	// t_token	*tokens;
+	t_token	*tokens;
 	// t_node	*s_cmd;
 	while (1)
 	{
@@ -27,7 +27,8 @@ int	main(void)
 			if (check_quotes(line) == 0)
 			{
 				printf("quotes are good\n");
-				// tokens = tokenize(line);
+				tokens = tokenize(line);
+				
 				// parser(&tokens, &s_cmd);
 				// print_nodes(s_cmd);
 				// clean_nodes(&s_cmd);

@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:31:45 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:53:12 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <readline/readline.h>
+#ifndef LEXER_H
+# define LEXER_H
 
-typedef enum s_token_type
-{
-	WORD,
-	INFILE,
-	OUTFILE,
-	APPEND,
-	HEREDOC,
-	PIPE
-}			t_token_type;
+# include "../minishell.h"
 
-typedef struct s_token
-{
-	t_token_type		type;
-	char				*content;
-	struct s_token		*next;
-	struct s_token		*prev;
-}						t_token;
+t_token			*tokenize(char *input);
+void			traverse(char *input, t_token **tokens);
+void			get_word(char *input, int *i, int *start, t_token **tokens);
+void			get_tokens(char *input, int *i, int *start, t_token **tokens);
+void			skip_quote_token(char *input, int *i);
+void			remove_upfront_spaces(char *str, int *i, int *start);
+int				is_token(char *str);
+t_token_type	token_type(char *str);
+int				is_quote(char c);
 
-int						check_quotes(char *input);
-int						check_single_quotes(char *input);
-int						check_double_quotes(char *input);
 
 #endif

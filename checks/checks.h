@@ -1,39 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   checks.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 11:31:45 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:47:37 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <readline/readline.h>
-
-typedef enum s_token_type
-{
-	WORD,
-	INFILE,
-	OUTFILE,
-	APPEND,
-	HEREDOC,
-	PIPE
-}			t_token_type;
-
-typedef struct s_token
-{
-	t_token_type		type;
-	char				*content;
-	struct s_token		*next;
-	struct s_token		*prev;
-}						t_token;
+#ifndef CHECKS_H
+# define CHECKS_H
 
 int						check_quotes(char *input);
 int						check_single_quotes(char *input);

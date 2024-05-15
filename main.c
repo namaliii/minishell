@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 14:43:00 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:33:20 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 int	main(int argc, char **argv, char **envp)
 {
 	char	*line;
-	t_token	*tokens;
-	t_node	*s_cmd;
+	t_shell	shell;
+
+	// t_token	*tokens;
+	// t_node	*s_cmd;
+	if (argc != 1 || *argv == NULL)
+		return (2);
 	while (1)
 	{
 		line = readline("$ ");  // Pass NULL to readline to use the default prompt
@@ -26,13 +30,17 @@ int	main(int argc, char **argv, char **envp)
 		{
 			if (check_quotes(line) == 0)
 			{
-				printf("quotes are good\n");
-				tokens = tokenize(line);
-				// print_tokens(tokens);
-				parser(&tokens, &s_cmd);
-				// print_nodes(s_cmd);
-				execute(shell, envp);
-				clean_nodes(&s_cmd);
+				// printf("quotes are good\n");
+				// tokens = tokenize(line);
+				// // print_tokens(tokens);
+				// parser(&tokens, &s_cmd);
+				// // print_nodes(s_cmd);
+				shell_init(&shell, line, envp);
+				env(shell.env);
+				// print_nodes(shell.s_cmd);
+				// execute(&shell);
+				// clean_nodes(&s_cmd);
+				clean_nodes(&(shell.s_cmd));
 			}
 			else
 				printf("quotes Error\n");

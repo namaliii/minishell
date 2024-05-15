@@ -4,6 +4,8 @@
 		"libft.h": "c",
 		"lists.h": "c",
 		"parser.h": "c",
-		"lexer.h": "c"
+		"lexer.h": "c",
+		"structs.h": "c",
+		"checks.h": "c"
 	}
 }

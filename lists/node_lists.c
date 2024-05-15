@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:58:03 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:05:03 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:43:18 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	node_add_back(t_node **lst, t_node *new)
 	}
 }
 
-t_node	*node_new(char **cmd, char type, t_token *files)
+t_node	*node_new(char **cmd, t_token *files)
 {
 	t_node	*node;
 
@@ -49,7 +49,6 @@ t_node	*node_new(char **cmd, char type, t_token *files)
 	if (node == NULL)
 		return (NULL);
 	node->cmd = cmd;
-	node->type = type;
 	node->files = files;
 	node->next = NULL;
 	node->prev = NULL;

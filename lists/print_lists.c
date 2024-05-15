@@ -6,28 +6,27 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:31:37 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:11:23 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:05:07 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
 #include "../minishell.h"
 
-// void	print_nodes(t_node *s_cmd)
-// {
-// 	t_node	*index;
+void	print_nodes(t_node *s_cmd)
+{
+	t_node	*index;
 
-// 	index = s_cmd;
-// 	while (index)
-// 	{
-// 		printf("------- new node %p ------\n", index);
-// 		printf("command list : \n");
-// 		print_char(index->cmd);
-// 		printf("files list : \n");
-// 		print_tokens(index->files);
-// 		index = index->next;
-// 	}
-// }
+	index = s_cmd;
+	while (index)
+	{
+		printf("------- new node %p ------\n", index);
+		printf("command list : \n");
+		print_char(index->cmd);
+		printf("files list : \n");
+		print_tokens(index->files);
+		index = index->next;
+	}
+}
 
 void	print_tokens(t_token *lst)
 {
@@ -46,22 +45,22 @@ void	print_tokens(t_token *lst)
 	}
 }
 
-// void	print_char(char **str)
-// {
-// 	int	i;
+void	print_char(char **str)
+{
+	int	i;
 
-// 	i = 0;
-// 	if (!str || !(*str))
-// 	{
-// 		printf("nothing found \n");
-// 		return ;
-// 	}
-// 	while (str[i])
-// 	{
-// 		if (i == 0)
-// 			printf("cmd : %s\n",str[i]);
-// 		else
-// 			printf("arg : %s\n",str[i]);
-// 		i++;
-// 	}
-// }
+	i = 0;
+	if (!str || !(*str))
+	{
+		printf("nothing found \n");
+		return ;
+	}
+	while (str[i])
+	{
+		if (i == 0)
+			printf("cmd : %s\n",str[i]);
+		else
+			printf("arg : %s\n",str[i]);
+		i++;
+	}
+}

@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:22:31 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:17:05 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-# include "../minishell.h"
+typedef enum s_token_type
+{
+	WORD,
+	INFILE,
+	OUTFILE,
+	APPEND,
+	HEREDOC,
+	PIPE
+}			t_token_type;
 
-t_token			*tokenize(char *input);
-void			traverse(char *input, t_token **tokens);
-void			get_word(char *input, int *i, int *start, t_token **tokens);
-void			get_tokens(char *input, int *i, int *start, t_token **tokens);
-void			skip_quote_token(char *input, int *i);
-void			remove_upfront_spaces(char *str, int *i, int *start);
-int				is_token(char *str);
-t_token_type	token_type(char *str);
-int				is_quote(char c);
+typedef struct s_token
+{
+	t_token_type		type;
+	char				*content;
+	struct s_token		*next;
+	struct s_token		*prev;
+}						t_token;
 
+typedef struct s_node
+{
+	char			**cmd;
+	char			type;
+	t_token			*files;
+	struct s_node	*next;
+	struct s_node	*prev;
+}					t_node;
 
 #endif

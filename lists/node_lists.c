@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_lists.c                                      :+:      :+:    :+:   */
+/*   node_lists.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 16:07:13 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:05:12 by mfaoussi         ###   ########.fr       */
+/*   Created: 2024/05/06 09:58:03 by mfaoussi          #+#    #+#             */
+/*   Updated: 2024/05/15 13:05:03 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+# include "../minishell.h"
 
-t_token	*token_last(t_token *lst)
+t_node	*node_last(t_node *lst)
 {
-	t_token	*index;
+	t_node	*index;
 
 	index = lst;
 	if (lst == NULL)
@@ -24,34 +24,33 @@ t_token	*token_last(t_token *lst)
 	return (index);
 }
 
-void	token_add_back(t_token **lst, t_token *new)
+void	node_add_back(t_node **lst, t_node *new)
 {
-	t_token	*index;
+	t_node	*index;
 
 	if (lst == NULL || new == NULL)
 		return ;
 	if (*lst == NULL)
-	{
 		*lst = new;
-	}
 	else
 	{
-		index = token_last(*lst);
+		index = node_last(*lst);
 		index->next = new;
 		new->prev = index;
+		new->next = NULL;
 	}
-
 }
 
-t_token	*token_new(char *content, t_token_type type)
+t_node	*node_new(char **cmd, char type, t_token *files)
 {
-	t_token	*node;
+	t_node	*node;
 
-	node = malloc(sizeof(t_token));
+	node = malloc(sizeof(t_node));
 	if (node == NULL)
 		return (NULL);
+	node->cmd = cmd;
 	node->type = type;
-	node->content = content;
+	node->files = files;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);

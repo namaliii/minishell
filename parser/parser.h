@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:22:31 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:51:48 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#ifndef PARSER_H
+# define PARSER_H
 
 # include "../minishell.h"
+# include "parser.h"
 
-t_token			*tokenize(char *input);
-void			traverse(char *input, t_token **tokens);
-void			get_word(char *input, int *i, int *start, t_token **tokens);
-void			get_tokens(char *input, int *i, int *start, t_token **tokens);
-void			skip_quote_token(char *input, int *i);
-void			remove_upfront_spaces(char *str, int *i, int *start);
-int				is_token(char *str);
-t_token_type	token_type(char *str);
-int				is_quote(char c);
+void	parser(t_token **tokens, t_node **s_cmd);
+void	t_cmd(t_node **s_cmd, t_token **index, t_token **files, t_token **cmd);
+char	**list_to_char(t_token **cmd);
+int		get_list_length(t_token *cmd);
+void	get_cmd(t_token **index, t_token **cmd);
+void	get_file(t_token **index, t_token **files);
+int		is_pipe(t_token *index);
+void	clean_nodes(t_node **node);
+void	clean_array(char **str);
+void	clean_files(t_token **files);
 
 
 #endif

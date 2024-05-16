@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_init.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 12:27:30 by anamieta         ###   ########.fr       */
+/*   Created: 2023/10/18 21:10:44 by anamieta          #+#    #+#             */
+/*   Updated: 2024/05/16 13:05:16 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	shell_init(t_shell *shell, char *line, char **env)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	shell->tokens = tokenize(line);
-	parser(&(shell->tokens), &(shell->s_cmd));
-	shell->env = ft_get_env(env);
-	shell->path = get_path(shell);
+	size_t			i;
+	unsigned char	*p;
+
+	i = 0;
+	p = (unsigned char *)b;
+	while (i < len)
+	{
+		p[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	totalsize;
+	void	*ptr;
+
+	totalsize = count * size;
+	ptr = malloc(totalsize);
+	if (!ptr)
+		return (NULL);
+	ft_memset(ptr, 0, totalsize);
+	return (ptr);
 }

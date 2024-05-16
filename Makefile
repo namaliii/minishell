@@ -1,7 +1,7 @@
 NAME	:= exec
 
 CC		:=	cc
-CFLAGS	:=	-Wextra -Wall -Werror 
+CFLAGS	:=	-Wextra -Wall -Werror
 
 SRCS	:=	$(wildcard *.c) $(wildcard */*.c)
 

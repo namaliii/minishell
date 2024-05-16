@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 12:27:44 by anamieta         ###   ########.fr       */
+/*   Created: 2023/10/25 19:57:34 by anamieta          #+#    #+#             */
+/*   Updated: 2024/05/16 14:06:04 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#include "../minishell.h"
 
-# include "../minishell.h"
+/Users/anamieta/github-projects/minishell_mine/exec/ft_putstr_fd.c
+{
+	int	len;
 
-void	shell_init(t_shell *shell, char *line, char **env);
-
-#endif
+	if (s == NULL)
+		return ;
+	len = ft_strlen(s);
+	write(fd, s, len);
+}

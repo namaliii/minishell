@@ -1,21 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_init.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 12:27:30 by anamieta         ###   ########.fr       */
+/*   Created: 2023/10/20 13:33:22 by anamieta          #+#    #+#             */
+/*   Updated: 2024/05/16 12:58:04 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	shell_init(t_shell *shell, char *line, char **env)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	shell->tokens = tokenize(line);
-	parser(&(shell->tokens), &(shell->s_cmd));
-	shell->env = ft_get_env(env);
-	shell->path = get_path(shell);
+	char	*constr;
+	size_t	lens1;
+	size_t	lens2;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	lens1 = ft_strlen(s1);
+	lens2 = ft_strlen(s2);
+	constr = (char *)ft_calloc((lens1 + lens2 + 1), sizeof(char));
+	if (constr == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		constr[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		constr[i] = s2[j];
+		i++;
+		j++;
+	}
+	return (constr);
 }

@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 14:21:20 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:19:14 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	pipe_check(t_shell *shell, int *fd_pipe);
 void	path_check(t_shell *shell, char *full_path, char *cmd);
 
 /* execution utils */
+void	execute_child(t_shell *shell, t_node *index, int *fd_pipe);
+void	execute_parent(t_node **index, int *fd_pipe);
 void	execute(t_shell *shell);
+void	restore_std(int *tmpin, int *tmpout);
 
 #endif

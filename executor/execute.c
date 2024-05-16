@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/16 16:58:49 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:17:09 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 	}
 	execve(full_path, index->cmd, NULL);
 
+}
+
+void	execute_parent(t_node **index, int *fd_pipe)
+{
+	wait(NULL);
+	if ((*index)->next == NULL)
+		close(STDIN_FILENO);
+	else
+	{
+		close(fd_pipe[1]);
+		dup2(fd_pipe[0], STDIN_FILENO);
+		close(fd_pipe[0]);
+	}
+	*index = (*index)->next;
+}
+
+void	restore_std(int *tmpin, int *tmpout)
+{
+	dup2(*tmpin, STDIN_FILENO);
+	close(*tmpin);
+	dup2(*tmpout, STDOUT_FILENO);
+	close(*tmpout);
 }
 
 void	execute(t_shell *shell)
@@ -53,22 +75,10 @@ void	execute(t_shell *shell)
 			execute_child(shell, index, fd_pipe);
 		else
 		{
-			wait(NULL);
-			if (index->next == NULL)
-				close(STDIN_FILENO);
-			else
-			{
-				close(fd_pipe[1]);
-				dup2(fd_pipe[0], STDIN_FILENO);
-				close(fd_pipe[0]);
-			}
-			index = index->next;
+			execute_parent(&index, fd_pipe);
 		}
 	}
-	dup2(tmpin, STDIN_FILENO);
-	close(tmpin);
-	dup2(tmpout, STDOUT_FILENO);
-	close(tmpout);
+	restore_std(&tmpin, &tmpout);
 	waitpid(pid, &status, 0);
 	shell->exit_code = WEXITSTATUS(status);
 }

@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 13:04:45 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:42:04 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t destsize);
 int				ft_strncmp(char *s1, char *s2, size_t n);
 char			*ft_strjoin(char const *s1, char const *s2);
 void			*ft_calloc(size_t count, size_t size);
+void			ft_putstr_fd(char *s, int fd);
 
 #endif

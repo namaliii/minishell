@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 15:33:20 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:28:31 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	main(int argc, char **argv, char **envp)
 				// parser(&tokens, &s_cmd);
 				// // print_nodes(s_cmd);
 				shell_init(&shell, line, envp);
-				env(shell.env);
+				print_char(shell.path);
+				// env(shell.env);
 				// print_nodes(shell.s_cmd);
 				// execute(&shell);
 				// clean_nodes(&s_cmd);

@@ -6,16 +6,11 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/16 14:34:25 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:56:15 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-// void	execute_single_cmd()
-// {
-
-// }
 
 void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 {
@@ -38,7 +33,12 @@ void	execute(t_shell *shell)
 	t_node	*index;
 	int		fd_pipe[2];
 	int		pid;
+	int		status;
+	int		tmpin;
+	int		tmpout;
 
+	tmpout = dup(STDOUT_FILENO);
+	tmpin = dup(STDIN_FILENO);
 	index = shell->s_cmd;
 	while (index)
 	{
@@ -50,23 +50,27 @@ void	execute(t_shell *shell)
 		pid = fork();
 		fork_check(shell, pid);
 		if (pid == 0)
-		{
 			execute_child(shell, index, fd_pipe);
-		}
 		else
 		{
 			wait(NULL);
-			// if (index->next == NULL)
-			// 	close(STDIN_FILENO);
-			// else
-		// {
-			close(fd_pipe[1]);
-			if (index->next != NULL)
+			if (index->next == NULL)
+				close(STDIN_FILENO);
+			else
+			{
+				close(fd_pipe[1]);
+				// if (index->next != NULL)
 				dup2(fd_pipe[0], STDIN_FILENO);
-			close(fd_pipe[0]);
-			// }
+				close(fd_pipe[0]);
+			}
+			index = index->next;
 		}
-		index = index->next;
 	}
+	dup2(tmpin, STDIN_FILENO);
+	close(tmpin);
+	dup2(tmpout, STDOUT_FILENO);
+	close(tmpout);
+	waitpid(pid, &status, 0);
+	shell->exit_code = WEXITSTATUS(status);
 }
 

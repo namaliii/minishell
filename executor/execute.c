@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/16 16:56:15 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:58:49 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	execute(t_shell *shell)
 			else
 			{
 				close(fd_pipe[1]);
-				// if (index->next != NULL)
 				dup2(fd_pipe[0], STDIN_FILENO);
 				close(fd_pipe[0]);
 			}

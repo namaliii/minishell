@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 12:32:54 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:19:03 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		line = readline("$ ");  // Pass NULL to readline to use the default prompt
+		if (!line)
+			break ;
 		if (ft_strncmp("exit", line, 4) == 0)
 			return (0);
 		else

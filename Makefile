@@ -1,6 +1,6 @@
 NAME	:= exec
 
-CC		:=	cc
+CC		:=	cc -fsanitize=address -g
 CFLAGS	:=	-Wextra -Wall -Werror
 
 SRCS	:=	$(wildcard *.c) $(wildcard */*.c)

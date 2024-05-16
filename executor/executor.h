@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 12:26:10 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:03:45 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 # include "../minishell.h"
 
 char	**get_path(t_shell *shell);
+void	execute(t_shell *shell);
+char	*check_cmd_path(char *cmd, char **paths);
 
 #endif

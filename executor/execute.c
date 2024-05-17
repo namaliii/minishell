@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/17 13:08:05 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:07:48 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 
 void	execute_parent(t_node **index, int *fd_pipe)
 {
-	// wait(NULL);
 	if ((*index)->next == NULL)
 		close(STDIN_FILENO);
 	else

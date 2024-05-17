@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 16:29:51 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:30:43 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,20 @@ char	*get_env_value(t_shell *shell, char *key)
 	return (NULL);
 }
 
-
-
 // char	*expand(char *str)
 // {
-// 	char	*new;
+// 	t_char	*new;
 // 	int		i;
 // 	int		a;
 
 // 	if (!str || *str == '\0')
 // 		return (NULL);
-// 	i = 0;
-// 	a = 0;
-// 	while (str[i])
-// 	{
-// 		if (str[i] == '$')
-// 		{
-			
-// 		}
-// 	}
+// 	// i = 0;
+// 	// a = 0;
+// 	// while (str[i])
+// 	// {
+// 	// 	if (str[i] == '$')
+// 	// 	{
+// 	// 	}
+// 	// }
 // }

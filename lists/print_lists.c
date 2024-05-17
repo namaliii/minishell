@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:31:37 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:05:07 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:51:16 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,38 @@ void	print_char(char **str)
 		i++;
 	}
 }
+
+void	print_c(t_char *lst)
+{
+	t_char	*index;
+
+	if (!lst)
+		return ;
+	index = lst;
+	while (index)
+	{
+		printf("%c\n", index->c);
+		index = index->next;
+	}
+}
+
+t_char	*str_to_charlst(char *str)
+{
+	t_char	*lst;
+	t_char	*new;
+	int		i;
+
+	lst = NULL;
+	if (!str || str[0] == '\0')
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		new = char_new(str[i]);
+		char_add_back(&lst, new);
+		i++;
+	}
+	return (lst);
+}
+
+

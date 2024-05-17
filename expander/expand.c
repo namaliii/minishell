@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 17:30:43 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/17 22:20:20 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,44 @@ char	*get_env_value(t_shell *shell, char *key)
 	return (NULL);
 }
 
-// char	*expand(char *str)
-// {
-// 	t_char	*new;
-// 	int		i;
-// 	int		a;
+char	*expand(char *str, t_shell *shell)
+{
+	t_char	*new;
+	char	*expanded;
+	int		i;
 
-// 	if (!str || *str == '\0')
-// 		return (NULL);
-// 	// i = 0;
-// 	// a = 0;
-// 	// while (str[i])
-// 	// {
-// 	// 	if (str[i] == '$')
-// 	// 	{
-// 	// 	}
-// 	// }
-// }
+	i = 0;
+	if (!str || *str == '\0')
+		return (NULL);
+	while (str[i])
+	{
+		if (str[i] == '"')
+			handle_db_quotes(&i, str, &new, shell);
+		else if (str[i] == '\'')
+			handle_sg_quotes(&i, str, &new);
+		else if (str[i] == '$')
+			handle_dollar(&i, str, &new, shell);
+		else
+			handle_simple_char(&i, str, &new);
+	}
+	expanded = charlst_to_str(&new);
+	return (expanded);
+}
+
+void	handle_db_quotes(int *i, char *str, t_char **new, t_shell *shell)
+{
+	*i = *i + 1;
+	while (str[*i])
+	{
+		if (str[*i] == '"')
+		{
+			*i = *i + 1;
+			return ;
+		}
+		else if (str[*i] == '$')
+			handle_dollar(&i, str, new, shell);
+		else
+			handle_simple_char(&i, str, new);
+	}
+}
+

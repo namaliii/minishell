@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 22:20:20 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/17 22:56:41 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,19 @@ void	handle_db_quotes(int *i, char *str, t_char **new, t_shell *shell)
 	}
 }
 
+void	handle_simple_char(int *i, char *str, t_char **new)
+{
+	t_char	*node;
+
+	node = char_new(str[*i]);
+	char_add_back(new, node);
+	*i = *i + 1;
+}
+
+void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
+{
+	// handle end of quotes just after dollar
+	// handle nb after the dollar
+	// handle the dollar solo 
+	// handle the dollar then
+}

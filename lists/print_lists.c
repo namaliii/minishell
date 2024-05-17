@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:31:37 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 17:51:16 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/17 18:48:59 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_char	*str_to_charlst(char *str)
 	i = 0;
 	while (str[i])
 	{
-		new = char_new(str[i]);
+		new = char_new((char)str[i]);
 		char_add_back(&lst, new);
 		i++;
 	}

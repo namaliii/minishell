@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:07:13 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 17:53:13 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/17 18:49:07 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ t_char	*char_new(char content)
 	if (node == NULL)
 		return (NULL);
 	node->c = content;
+	node->next = NULL;
 	return (node);
 }

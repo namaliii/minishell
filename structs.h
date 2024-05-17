@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 14:20:34 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:02:48 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_shell
 	t_env			*env;
 	char			**path;
 	int				exit_code;
+	int				fd_pipe[2];
 }	t_shell;
 
 #endif

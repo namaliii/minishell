@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/16 16:19:03 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:24:09 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	main(int argc, char **argv, char **envp)
 			{
 				// printf("quotes are good\n");
 				// tokens = tokenize(line);
-				// // print_tokens(tokens);
+				// print_tokens(tokens);
 				// parser(&tokens, &s_cmd);
-				// // print_nodes(s_cmd);
+				// print_nodes(s_cmd);
 				shell_init(&shell, line, envp);
 				// env(shell.env);
 				// print_nodes(shell.s_cmd);

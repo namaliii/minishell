@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:18:55 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/16 14:43:56 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:07:19 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ void	path_check(t_shell *shell, char *full_path, char *cmd)
 	}
 }
 
-// void	exec_check(t_shell *shell, char *path, char **cmd, char **envp)
-// {
-// 	if (execve(path, cmd, envp) == -1)
-// 	{
-// 		free(path);
-// 		ft_putstr_fd("minishell: ", 2);
-// 		ft_putstr_fd(cmd[0], 2);
-// 		ft_putstr_fd(": command not found", 2);
-// 		ft_putstr_fd("\n", 2);
-// 		free_array(cmd);
-// 		exit(126);
-// 		shell->exit_code = 126;
-// 	}
-// }
+void	exec_check(t_shell *shell, char *path, char **cmd, char **envp)
+{
+	if (execve(path, cmd, envp) == -1)
+	{
+		free(path);
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(cmd[0], 2);
+		ft_putstr_fd(": command not found", 2);
+		ft_putstr_fd("\n", 2);
+		clean_array(cmd);
+		exit(126);
+		shell->exit_code = 126;
+	}
+}
 
 void	pipe_check(t_shell *shell, int *fd_pipe)
 {

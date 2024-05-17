@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/16 18:17:09 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:07:48 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 		dup2(fd_pipe[1], STDOUT_FILENO);
 		close(fd_pipe[1]);
 	}
-	execve(full_path, index->cmd, NULL);
+	exec_check(shell, full_path, index->cmd, NULL);
 
 }
 
 void	execute_parent(t_node **index, int *fd_pipe)
 {
-	wait(NULL);
 	if ((*index)->next == NULL)
 		close(STDIN_FILENO);
 	else
@@ -50,10 +49,18 @@ void	restore_std(int *tmpin, int *tmpout)
 	close(*tmpout);
 }
 
+void	create_pipe(t_shell *shell, t_node *index)
+{
+	if (index->next != NULL)
+	{
+		pipe(shell->fd_pipe);
+		pipe_check(shell, shell->fd_pipe);
+	}
+}
+
 void	execute(t_shell *shell)
 {
 	t_node	*index;
-	int		fd_pipe[2];
 	int		pid;
 	int		status;
 	int		tmpin;
@@ -64,19 +71,13 @@ void	execute(t_shell *shell)
 	index = shell->s_cmd;
 	while (index)
 	{
-		if (index->next != NULL)
-		{
-			pipe(fd_pipe);
-			pipe_check(shell, fd_pipe);
-		}
+		create_pipe(shell, index);
 		pid = fork();
 		fork_check(shell, pid);
 		if (pid == 0)
-			execute_child(shell, index, fd_pipe);
+			execute_child(shell, index, shell->fd_pipe);
 		else
-		{
-			execute_parent(&index, fd_pipe);
-		}
+			execute_parent(&index, shell->fd_pipe);
 	}
 	restore_std(&tmpin, &tmpout);
 	waitpid(pid, &status, 0);

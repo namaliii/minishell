@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 15:11:12 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:49:45 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void				token_add_back(t_token **lst, t_token *new);
 void				print_tokens(t_token *lst);
 void				print_nodes(t_node *s_cmd);
 void				print_char(char **str);
+void				print_c(t_char *lst);
 
 /** node list manipulation */
 
@@ -37,5 +38,13 @@ t_node				*node_new(char **cmd, t_token *files);
 t_env				*env_last(t_env *lst);
 void				env_add_back(t_env **lst, t_env *new);
 t_env				*env_new(char **content);
+
+/** char list manipulation */
+
+t_char				*char_last(t_char *lst);
+void				char_add_back(t_char **lst, t_char *new);
+t_char				*char_new(char content);
+t_char				*str_to_charlst(char *str);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:31:37 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:05:07 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:14:06 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	print_nodes(t_node *s_cmd)
 {
 	t_node	*index;
 
+	if (!s_cmd)
+	{
+		printf("cmdlist not provided \n");
+		exit(44);
+	}
 	index = s_cmd;
 	while (index)
 	{
@@ -32,15 +37,14 @@ void	print_tokens(t_token *lst)
 {
 	t_token	*index;
 
-	if (!lst)
+	if (lst == NULL)
 	{
-		printf("no list provided\n");
 		return ;
 	}
 	index = lst;
 	while (index)
 	{
-		printf("%s   %d\n",index->content, index->type);
+		printf("token : %s\n", index->content);
 		index = index->next;
 	}
 }
@@ -64,3 +68,18 @@ void	print_char(char **str)
 		i++;
 	}
 }
+
+void	print_c(t_char *lst)
+{
+	t_char	*index;
+
+	if (!lst)
+		return ;
+	index = lst;
+	while (index)
+	{
+		printf("%c\n", index->c);
+		index = index->next;
+	}
+}
+

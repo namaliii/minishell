@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/19 11:10:05 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/19 12:40:02 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,59 @@ char	*expand(char *str, t_shell *shell)
 	expanded = charlst_to_str(&new);
 	return (expanded);
 }
-// void	expand_all(t_token *tokens, t_shell *shell)
-// {
-// 	char	*expanded;
-// 	t_token	*index;
 
-// 	if (!tokens || !tokens)
-// 	{
-// 		printf("expansion failed\n");
-// 		return ;
-// 	}
-// 	index = tokens;
-// 	while (index)
-// 	{
-// 		expanded = NULL;
-// 		expanded = expand(index->content, shell);
-// 		// free(index->content);
-// 		// index->content = expanded;
-// 		printf("%s   expanded to : %s\n",index->content, expanded);
-// 		index = index->next;
-// 		free(expanded);
-// 	}
-// }
+void	delete_expanded_node(t_token **node)
+{
+	t_token	*prev;
+
+	if (!node || !*node)
+		return ;
+	prev = (*node)->prev;
+	if (prev)
+	{
+		prev->next = (*node)->next;
+		(*node)->prev = NULL;
+		(*node)->next = NULL;
+		free((*node)->content);
+		free((*node));
+		(*node) = prev;
+	}
+	else
+	{
+		prev = (*node);
+		(*node) = (*node)->next;
+		prev->next = NULL;
+		free(prev->content);
+		free(prev);
+	}
+}
+void	expand_all(t_shell *shell)
+{
+	char	*expanded;
+	t_token	*index;
+
+	index = shell->tokens;
+	if (!index)
+	{
+		printf("expansion failed\n");
+		return ;
+	}
+	while (index)
+	{
+		expanded = NULL;
+		expanded = expand(index->content, shell);
+		if (expanded == NULL)
+		{
+			delete_expanded_node(&index);
+		}
+		else
+		{
+			free(index->content);
+			index->content = expanded;
+			index = index->next;
+		}
+	}
+}
 
 void	handle_db_quotes(int *i, char *str, t_char **new, t_shell *shell)
 {
@@ -131,13 +162,16 @@ void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 		//printf("crawling %c   %d\n",str[*i], *i);
 		while (str[*i] && stop_crawling(str[*i]) == 0)
 		{
-			printf("crawling %c   %d\n",str[*i], *i);
+			// printf("crawling %c   %d\n",str[*i], *i);
 			*i = *i + 1;
 		}
 		init_tmp(tmp, start, *i - 1, str);
 		to_expand = get_env_value(shell, tmp);
-		extract_tmp(to_expand, new);
-		free(to_expand);
+		if (to_expand != NULL)
+		{
+			extract_tmp(to_expand, new);
+			free(to_expand);
+		}
 	}
 }
 void	handle_double_dollar(int *i, t_char **new)

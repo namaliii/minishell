@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/19 12:40:02 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/19 19:06:32 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,31 +59,35 @@ char	*expand(char *str, t_shell *shell)
 	return (expanded);
 }
 
-void	delete_expanded_node(t_token **node)
+void	delete_expanded_node(t_token **node, t_shell *shell)
 {
 	t_token	*prev;
+	t_token	*index;
+	t_token	*next;
 
-	if (!node || !*node)
-		return ;
+	if (shell->tokens == (*node))
+		shell->tokens = (shell->tokens)->next;
+	index = *node;
 	prev = (*node)->prev;
+	next = (*node)->next;
+	(*node) = (*node)->next;
+	index->next = NULL;
+	index->prev = NULL;
+	free(index->content);
+	free(index);
 	if (prev)
 	{
-		prev->next = (*node)->next;
-		(*node)->prev = NULL;
-		(*node)->next = NULL;
-		free((*node)->content);
-		free((*node));
-		(*node) = prev;
+		prev->next = next;
+		if (next)
+			next->prev = prev;
 	}
 	else
 	{
-		prev = (*node);
-		(*node) = (*node)->next;
-		prev->next = NULL;
-		free(prev->content);
-		free(prev);
+		if (next)
+			next->prev = NULL;
 	}
 }
+
 void	expand_all(t_shell *shell)
 {
 	char	*expanded;
@@ -101,12 +105,13 @@ void	expand_all(t_shell *shell)
 		expanded = expand(index->content, shell);
 		if (expanded == NULL)
 		{
-			delete_expanded_node(&index);
+			delete_expanded_node(&index, shell);
 		}
 		else
 		{
 			free(index->content);
 			index->content = expanded;
+			printf("content replaced only %s\n",index->content);
 			index = index->next;
 		}
 	}

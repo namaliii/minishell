@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 16:27:19 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/19 20:00:59 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <readline/readline.h>
+# include <stdbool.h>
+# include <signal.h>
+# include <termios.h>
+
 # include "structs.h"
 # include "builtins/builtins.h"
 # include "checks/checks.h"

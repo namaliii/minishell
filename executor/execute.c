@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/17 14:07:48 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/19 19:55:59 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 {
 	char	*full_path;
 
+	default_child_signals();
 	full_path = check_cmd_path(index->cmd[0], shell->path);
 	path_check(shell, full_path, index->cmd[0]);
 	if (index->next != NULL)
@@ -69,8 +70,13 @@ void	execute(t_shell *shell)
 	tmpout = dup(STDOUT_FILENO);
 	tmpin = dup(STDIN_FILENO);
 	index = shell->s_cmd;
+	// if (ft_strncmp("echo", index->cmd[0], 4) == 0)
+	// 	echo(index->cmd);
+	// else
+	// {
 	while (index)
 	{
+		ignore_signals();
 		create_pipe(shell, index);
 		pid = fork();
 		fork_check(shell, pid);
@@ -82,5 +88,6 @@ void	execute(t_shell *shell)
 	restore_std(&tmpin, &tmpout);
 	waitpid(pid, &status, 0);
 	shell->exit_code = WEXITSTATUS(status);
+	// }
 }
 

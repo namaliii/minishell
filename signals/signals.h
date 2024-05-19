@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   signals.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/19 19:56:55 by anamieta         ###   ########.fr       */
+/*   Created: 2024/05/18 13:20:29 by anamieta          #+#    #+#             */
+/*   Updated: 2024/05/18 13:44:15 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#include "../minishell.h"
 
-# include "../minishell.h"
-
-t_env					*ft_get_env(char **env);
-void					env(t_env	*env);
-int						echo(char **cmd);
-#endif
+void	parent_signals(int sig);
+void	default_child_signals(void);
+void	ignore_signals(void);
+void	setup_signals(void);
+// void	heredoc_signals(void);

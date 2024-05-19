@@ -8,6 +8,8 @@
 		"structs.h": "c",
 		"checks.h": "c",
 		"readline.h": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"termios.h": "c",
+		"signal.h": "c"
 	}
 }

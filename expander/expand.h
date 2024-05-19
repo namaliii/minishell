@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 17:29:40 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/18 21:27:51 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,17 @@
 # include "../minishell.h"
 
 char	*get_env_value(t_shell *shell, char *key);
+char	*expand(char *str, t_shell *shell);
+void	handle_db_quotes(int *i, char *str, t_char **new, t_shell *shell);
+void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell);
+void	init_tmp(char *tmp, int start, int index, char *str);
+void	extract_tmp(char *tmp, t_char **new);
+int		stop_crawling(int c);
+int		get_t_char_length(t_char **new);
+char	*charlst_to_str(t_char **new);
+void	handle_exit_code(int *i, t_char **new, t_shell *shell);
+void	handle_double_dollar(int *i, t_char **new);
+void	handle_simple_char(int *i, char *str, t_char **new);
+void	expand_all(t_token *tokens, t_shell *shell);
 
 #endif

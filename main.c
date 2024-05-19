@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 18:50:56 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/18 19:33:03 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	char	*line;
 	t_shell	shell;
-	t_char	*lst;
+	// t_char	*lst;
 
 	// t_token	*tokens;
 	// t_node	*s_cmd;
@@ -38,8 +38,8 @@ int	main(int argc, char **argv, char **envp)
 				// print_tokens(tokens);
 				// parser(&tokens, &s_cmd);
 				// print_nodes(s_cmd);
-				lst = str_to_charlst(line);
-				print_c(lst);
+				// lst = str_to_charlst(line);
+				// print_c(lst);
 				shell_init(&shell, line, envp);
 				// env(shell.env);
 				// print_nodes(shell.s_cmd);

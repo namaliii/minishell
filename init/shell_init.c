@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 18:51:10 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/19 11:15:28 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 void	shell_init(t_shell *shell, char *line, char **env)
 {
-	shell->tokens = tokenize(line);
+	// char	*s;
+	// char	test[] = "$$$USER-of-life pid = $$ exit=$?";
 	shell->env = ft_get_env(env);
+	shell->path = get_path(shell);
+	shell->tokens = tokenize(line);
+	shell->exit_code = 0;
+	// printf("before expansion\n");
+	s = expand(test, shell);
+	printf("%s : expanded to : %s\n",test, s);
+	// print_tokens(shell->tokens);
+	// expand_all(shell->tokens, shell);
+	// printf("after expansion\n");
+	// print_tokens(shell->tokens);
 	/// handle quotes & expand
 	shell->s_cmd = NULL;
 	parser(&(shell->tokens), &(shell->s_cmd));
-	shell->path = get_path(shell);
 }

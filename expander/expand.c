@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/20 15:09:33 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:22:12 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,8 @@ void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 		handle_double_dollar(i, new);
 	else if (str[*i] == '$' && str[*i + 1] == '?')
 		handle_exit_code(i, new, shell);
+	else if (str[*i] == '$' && ((str[*i + 1] == '\'') || (str[*i + 1] == '"')))
+		*i = *i + 1;
 	else if (str[*i] == '$' && stop_crawling(str[*i + 1]) == 1)
 		handle_simple_char(i, str, new);
 	else

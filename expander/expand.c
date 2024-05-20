@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/19 19:06:32 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:17:50 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ char	*get_env_value(t_shell *shell, char *key)
 	while (env)
 	{
 		if (ft_strncmp(key, env->content[0], ft_strlen(key)) == 0)
-			return (ft_strdup(env->content[1]));
+		{
+			if (ft_strlen(key) == ft_strlen(env->content[0]))
+				return (ft_strdup(env->content[1]));
+		}
 		env = env->next;
 	}
 	return (NULL);
@@ -111,7 +114,6 @@ void	expand_all(t_shell *shell)
 		{
 			free(index->content);
 			index->content = expanded;
-			printf("content replaced only %s\n",index->content);
 			index = index->next;
 		}
 	}
@@ -167,7 +169,6 @@ void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 		//printf("crawling %c   %d\n",str[*i], *i);
 		while (str[*i] && stop_crawling(str[*i]) == 0)
 		{
-			// printf("crawling %c   %d\n",str[*i], *i);
 			*i = *i + 1;
 		}
 		init_tmp(tmp, start, *i - 1, str);

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/20 14:39:46 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:09:33 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*expand(char *str, t_shell *shell)
 		if (str[i] == '"')
 			handle_db_quotes(&i, str, &new, shell);
 		else if (str[i] == '\'')
-			handle_db_quotes(&i, str, &new, shell);
+			handle_sg_quotes(&i, str, &new);
 		else if (str[i] == '$')
 			handle_dollar(&i, str, &new, shell);
 		else
@@ -131,6 +131,21 @@ void	handle_db_quotes(int *i, char *str, t_char **new, t_shell *shell)
 		}
 		else if (str[*i] == '$')
 			handle_dollar(i, str, new, shell);
+		else
+			handle_simple_char(i, str, new);
+	}
+}
+
+void	handle_sg_quotes(int *i, char *str, t_char **new)
+{
+	*i = *i + 1;
+	while (str[*i])
+	{
+		if (str[*i] == '\'')
+		{
+			*i = *i + 1;
+			return ;
+		}
 		else
 			handle_simple_char(i, str, new);
 	}

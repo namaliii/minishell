@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/17 13:06:41 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:22:31 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ void	execute_parent(t_node **index, int *fd_pipe);
 void	execute(t_shell *shell);
 void	restore_std(int *tmpin, int *tmpout);
 void	create_pipe(t_shell *shell, t_node *index);
+
+int		open_file(t_shell *shell, int type, char *file_name);
+void	open_redirect_files(t_shell *shell, t_node *lst);
 
 #endif

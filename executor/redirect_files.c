@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/20 19:48:29 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:50:40 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	open_redirect_files(t_shell *shell, t_node *lst)
 	files_cpy = lst->files;
 	while (files_cpy->next)
 	{
+		fprintf(stderr, "looping through the files\n");
+		fprintf(stderr, "file type: %s, content: %s\n", files_cpy->content, files_cpy->next->content);
 		if (files_cpy->type >= INFILE && files_cpy->type <= APPEND)
 		{
 			fd = open_file(shell, files_cpy->type, files_cpy->next->content);

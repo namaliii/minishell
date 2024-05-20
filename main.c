@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/19 19:54:31 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:50:49 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv, char **envp)
 				// print_c(lst);
 				shell_init(&shell, line, envp);
 				// env(shell.env);
-				print_nodes(shell.s_cmd);
+				// print_nodes(shell.s_cmd);
 				execute(&shell);
 				// clean_nodes(&s_cmd);
 				clean_nodes(&(shell.s_cmd));

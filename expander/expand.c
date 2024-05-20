@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/20 14:17:50 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:39:46 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,23 +150,19 @@ void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 	char	tmp[100];
 	int		start;
 	char	*to_expand;
-	// handle end of quotes just after dollar
-	// handle nb after the dollar
-	// handle the dollar solo 
-	// handle the dollar then
+
 	if (str[*i] == '$' && ft_isdigit(str[*i + 1]) == 1)
 		*i = *i + 2;
 	else if (str[*i] == '$' && str[*i + 1] == '$')
 		handle_double_dollar(i, new);
 	else if (str[*i] == '$' && str[*i + 1] == '?')
 		handle_exit_code(i, new, shell);
-	else if (str[*i] == '$' && (str[*i + 1] == ' ' || str[*i + 1] == '"'))
+	else if (str[*i] == '$' && stop_crawling(str[*i + 1]) == 1)
 		handle_simple_char(i, str, new);
 	else
 	{
 		*i = *i + 1;
 		start = *i;
-		//printf("crawling %c   %d\n",str[*i], *i);
 		while (str[*i] && stop_crawling(str[*i]) == 0)
 		{
 			*i = *i + 1;
@@ -180,6 +176,7 @@ void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 		}
 	}
 }
+
 void	handle_double_dollar(int *i, t_char **new)
 {
 	int		pid;
@@ -282,7 +279,7 @@ int		get_t_char_length(t_char **new)
 int	stop_crawling(int c)
 {
 	if (ft_isspace(c) == 1 || (c >= 32 && c <= 47) || (c >= 58 && c <= 64) \
-		|| (c > 90 && c < 97) || (c > 122 && c < 127))
+		|| (c > 90 && c < 97) || (c > 122 && c < 127) || c == '\0')
 	{
 		return (1);
 	}

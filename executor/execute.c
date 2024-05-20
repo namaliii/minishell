@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/19 19:55:59 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:48:00 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 		dup2(fd_pipe[1], STDOUT_FILENO);
 		close(fd_pipe[1]);
 	}
+	if (index->files)
+		open_redirect_files(shell, index);
 	exec_check(shell, full_path, index->cmd, NULL);
-
 }
 
 void	execute_parent(t_node **index, int *fd_pipe)

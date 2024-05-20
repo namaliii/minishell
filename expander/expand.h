@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/19 18:59:20 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:09:01 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	handle_double_dollar(int *i, t_char **new);
 void	handle_simple_char(int *i, char *str, t_char **new);
 void	expand_all(t_shell *shell);
 void	delete_expanded_node(t_token **node, t_shell *shell);
+void	handle_sg_quotes(int *i, char *str, t_char **new);
 
 #endif

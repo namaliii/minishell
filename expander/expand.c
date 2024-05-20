@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/19 19:06:32 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:22:12 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ char	*get_env_value(t_shell *shell, char *key)
 	while (env)
 	{
 		if (ft_strncmp(key, env->content[0], ft_strlen(key)) == 0)
-			return (ft_strdup(env->content[1]));
+		{
+			if (ft_strlen(key) == ft_strlen(env->content[0]))
+				return (ft_strdup(env->content[1]));
+		}
 		env = env->next;
 	}
 	return (NULL);
@@ -47,7 +50,7 @@ char	*expand(char *str, t_shell *shell)
 		if (str[i] == '"')
 			handle_db_quotes(&i, str, &new, shell);
 		else if (str[i] == '\'')
-			handle_db_quotes(&i, str, &new, shell);
+			handle_sg_quotes(&i, str, &new);
 		else if (str[i] == '$')
 			handle_dollar(&i, str, &new, shell);
 		else
@@ -111,7 +114,6 @@ void	expand_all(t_shell *shell)
 		{
 			free(index->content);
 			index->content = expanded;
-			printf("content replaced only %s\n",index->content);
 			index = index->next;
 		}
 	}
@@ -134,6 +136,21 @@ void	handle_db_quotes(int *i, char *str, t_char **new, t_shell *shell)
 	}
 }
 
+void	handle_sg_quotes(int *i, char *str, t_char **new)
+{
+	*i = *i + 1;
+	while (str[*i])
+	{
+		if (str[*i] == '\'')
+		{
+			*i = *i + 1;
+			return ;
+		}
+		else
+			handle_simple_char(i, str, new);
+	}
+}
+
 void	handle_simple_char(int *i, char *str, t_char **new)
 {
 	t_char	*node;
@@ -148,26 +165,23 @@ void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 	char	tmp[100];
 	int		start;
 	char	*to_expand;
-	// handle end of quotes just after dollar
-	// handle nb after the dollar
-	// handle the dollar solo 
-	// handle the dollar then
+
 	if (str[*i] == '$' && ft_isdigit(str[*i + 1]) == 1)
 		*i = *i + 2;
 	else if (str[*i] == '$' && str[*i + 1] == '$')
 		handle_double_dollar(i, new);
 	else if (str[*i] == '$' && str[*i + 1] == '?')
 		handle_exit_code(i, new, shell);
-	else if (str[*i] == '$' && (str[*i + 1] == ' ' || str[*i + 1] == '"'))
+	else if (str[*i] == '$' && ((str[*i + 1] == '\'') || (str[*i + 1] == '"')))
+		*i = *i + 1;
+	else if (str[*i] == '$' && stop_crawling(str[*i + 1]) == 1)
 		handle_simple_char(i, str, new);
 	else
 	{
 		*i = *i + 1;
 		start = *i;
-		//printf("crawling %c   %d\n",str[*i], *i);
 		while (str[*i] && stop_crawling(str[*i]) == 0)
 		{
-			// printf("crawling %c   %d\n",str[*i], *i);
 			*i = *i + 1;
 		}
 		init_tmp(tmp, start, *i - 1, str);
@@ -179,6 +193,7 @@ void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 		}
 	}
 }
+
 void	handle_double_dollar(int *i, t_char **new)
 {
 	int		pid;
@@ -281,7 +296,7 @@ int		get_t_char_length(t_char **new)
 int	stop_crawling(int c)
 {
 	if (ft_isspace(c) == 1 || (c >= 32 && c <= 47) || (c >= 58 && c <= 64) \
-		|| (c > 90 && c < 97) || (c > 122 && c < 127))
+		|| (c > 90 && c < 97) || (c > 122 && c < 127) || c == '\0')
 	{
 		return (1);
 	}

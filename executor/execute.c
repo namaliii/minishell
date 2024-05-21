@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/20 19:55:54 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/21 12:57:10 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ void	execute(t_shell *shell)
 	// 	echo(index->cmd);
 	// else
 	// {
+	heredoc(shell);
+	printf("************* print file names ***********\n");
+	print_hd_names(shell);
 	while (index)
 	{
 		ignore_signals();

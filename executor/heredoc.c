@@ -6,17 +6,36 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:32:10 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/21 13:21:36 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:23:16 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+void	heredoc_loop(t_token	*files, int *fd)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = readline("> ");
+		if (ft_strlen(line) == ft_strlen(files->next->content))
+		{
+			if (ft_strncmp(line, files->next->content, ft_strlen(line)) == 0)
+				break ;
+		}
+		else
+		{
+			write(*fd, line, ft_strlen(line));
+			write(*fd, "\n", 1);
+		}
+	}
+}
+
 void	heredoc(t_shell *shell)
 {
 	t_node	*s_cmd;
 	t_token	*files;
-	char	*line;
 	int		count;
 	int		fd;
 
@@ -30,23 +49,8 @@ void	heredoc(t_shell *shell)
 			if (files->type == HEREDOC)
 			{
 				assign_name(&files, &count);
-				fd = open_file(shell, files->type, files->hd_name);
-				while (1)
-				{
-					line = readline("> ");
-					if (ft_strlen(line) == ft_strlen(files->next->content))
-					{
-						if (ft_strncmp(line, files->next->content, ft_strlen(line)) == 0)
-						{
-							break;
-						}
-					}
-					else
-					{
-						write(fd, line, ft_strlen(line));
-						write(fd, "\n", 1);
-					}
-				}
+				fd = open_file_hd(shell, files->type, files->hd_name);
+				heredoc_loop(files, &fd);
 				close(fd);
 			}
 			files = files->next;
@@ -55,6 +59,7 @@ void	heredoc(t_shell *shell)
 	}
 }
 
+
 void	assign_name(t_token **file, int *count)
 {
 	t_token	*index;
@@ -62,34 +67,40 @@ void	assign_name(t_token **file, int *count)
 
 	index = *file;
 	i = 0;
-	while (i < 10)
+	while (i < 12)
 	{
 		index->hd_name[i] = '\0';
 		i++;
 	}
-	index->hd_name[0] = 'f';
-	index->hd_name[1] = 'i';
-	index->hd_name[2] = 'l';
-	index->hd_name[3] = 'e';
-	index->hd_name[4] = *count + '0';
+	index->hd_name[0] = '.';
+	index->hd_name[1] = '/';
+	index->hd_name[2] = 't';
+	index->hd_name[3] = 'm';
+	index->hd_name[4] = 'p';
+	index->hd_name[5] = '/';
+	index->hd_name[6] = 'f';
+	index->hd_name[7] = 'i';
+	index->hd_name[8] = 'l';
+	index->hd_name[9] = 'e';
+	index->hd_name[10] = *count + '0';
 	*count = *count + 1;
 }
 
-void	print_hd_names(t_shell *shell)
-{
-	t_node	*s_cmd;
-	t_token	*files;
+// void	print_hd_names(t_shell *shell)
+// {
+// 	t_node	*s_cmd;
+// 	t_token	*files;
 
-	s_cmd = shell->s_cmd;
-	while (s_cmd)
-	{
-		files = s_cmd->files;
-		while (files)
-		{
-			if (files->type == HEREDOC)
-				printf("file : %u name : %s \n", files->type, files->hd_name);
-			files = files->next;
-		}
-		s_cmd = s_cmd->next;
-	}
-}
+// 	s_cmd = shell->s_cmd;
+// 	while (s_cmd)
+// 	{
+// 		files = s_cmd->files;
+// 		while (files)
+// 		{
+// 			// if (files->type == HEREDOC)
+// 			// 	printf("file : %u name : %s \n", files->type, files->hd_name);
+// 			files = files->next;
+// 		}
+// 		s_cmd = s_cmd->next;
+// 	}
+// }

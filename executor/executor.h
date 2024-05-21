@@ -6,7 +6,7 @@
 /*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 12:58:19 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:24:10 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		open_file(t_shell *shell, int type, char *file_name);
 void	open_redirect_files(t_shell *shell, t_node *lst);
 void	heredoc(t_shell *shell);
 void	assign_name(t_token **file, int *count);
-void	print_hd_names(t_shell *shell);
+// void	print_hd_names(t_shell *shell);
+int		open_file_hd(t_shell *shell, int type, char *file_name);
 
 #endif

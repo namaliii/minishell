@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:32:10 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/21 15:23:16 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/21 16:36:17 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	heredoc_loop(t_token	*files, int *fd)
+void	heredoc_loop(t_token	*files, int *fd, t_shell *shell)
 {
 	char	*line;
+	char	*expanded;
 
 	while (1)
 	{
@@ -22,13 +23,24 @@ void	heredoc_loop(t_token	*files, int *fd)
 		if (ft_strlen(line) == ft_strlen(files->next->content))
 		{
 			if (ft_strncmp(line, files->next->content, ft_strlen(line)) == 0)
+			{
+				free(line);
 				break ;
+			}
 		}
 		else
 		{
-			write(*fd, line, ft_strlen(line));
+			if (files->hd_expanded == 0)
+			{
+				expanded = expand(line, shell);
+				write(*fd, expanded, ft_strlen(expanded));
+				free(expanded);
+			}
+			else
+				write(*fd, line, ft_strlen(line));
 			write(*fd, "\n", 1);
 		}
+		free(line);
 	}
 }
 
@@ -50,7 +62,7 @@ void	heredoc(t_shell *shell)
 			{
 				assign_name(&files, &count);
 				fd = open_file_hd(shell, files->type, files->hd_name);
-				heredoc_loop(files, &fd);
+				heredoc_loop(files, &fd, shell);
 				close(fd);
 			}
 			files = files->next;
@@ -97,8 +109,8 @@ void	assign_name(t_token **file, int *count)
 // 		files = s_cmd->files;
 // 		while (files)
 // 		{
-// 			// if (files->type == HEREDOC)
-// 			// 	printf("file : %u name : %s \n", files->type, files->hd_name);
+// 			if (files->type == HEREDOC)
+// 				printf("delimiter : %s expande : %d \n",files->next->content, files->hd_expanded);
 // 			files = files->next;
 // 		}
 // 		s_cmd = s_cmd->next;

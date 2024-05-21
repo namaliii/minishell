@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_lists.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:07:13 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 12:23:36 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:53:23 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_token	*token_new(char *content, t_token_type type)
 	if (node == NULL)
 		return (NULL);
 	node->type = type;
+	node->hd_expanded = 0;
 	node->content = content;
 	node->next = NULL;
 	node->prev = NULL;

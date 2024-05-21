@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 14:43:10 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:40:28 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_token
 	t_token_type		type;
 	char				*content;
 	char				hd_name[12];
+	int					hd_expanded;
 	struct s_token		*next;
 	struct s_token		*prev;
 }						t_token;
@@ -52,18 +53,6 @@ typedef struct s_char
 	char			c;
 	struct s_char	*next;
 }					t_char;
-
-// typedef struct s_heredoc
-// {
-// 	char				*limiter;
-// 	bool				expand;
-// 	struct s_heredoc	*next;
-// }				t_heredoc;
-
-	// t_heredoc		*heredoc;
-	// char			*last_hd_name;
-	// int				fd_last_hd;
-	// int				exit_code;
 
 typedef struct s_shell
 {

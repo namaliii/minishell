@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 13:38:21 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:07:35 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv, char **envp)
 			}
 			else
 				printf("quotes Error\n");
+			add_history(line);
 			free(line);
 		}
 	}

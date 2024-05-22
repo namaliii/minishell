@@ -6,21 +6,23 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 16:27:01 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:41:01 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	set_hd_expanded(t_token **tokens);
-
-void	shell_init(t_shell *shell, char *line, char **env)
+void	shell_init(t_shell *shell, char **env)
 {
 	shell->env = ft_get_env(env);
+	shell->exit_code = 0;
+}
+
+void	shell_setup(t_shell *shell, char *line)
+{
 	shell->path = get_path(shell);
 	shell->tokens = tokenize(line);
 	set_hd_expanded(&(shell->tokens));
-	shell->exit_code = 0;
 	expand_all(shell);
 	shell->s_cmd = NULL;
 	if (shell->tokens == NULL)

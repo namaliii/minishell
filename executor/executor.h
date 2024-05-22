@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 16:36:05 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:25:07 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	heredoc(t_shell *shell);
 void	assign_name(t_token **file, int *count);
 // void	print_hd_names(t_shell *shell);
 int		open_file_hd(t_shell *shell, int type, char *file_name);
+void	clean_path(t_shell *shell);
 
 #endif

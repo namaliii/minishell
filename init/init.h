@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 15:50:49 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:56:04 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include "../minishell.h"
 
-void	shell_init(t_shell *shell, char *line, char **env);
+void	shell_init(t_shell *shell, char **env);
+void	shell_setup(t_shell *shell, char *line);
 int		include_quotes(char *str);
+void	set_hd_expanded(t_token **tokens);
 
 #endif

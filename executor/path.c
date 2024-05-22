@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:32:06 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/16 13:25:14 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:41:21 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,9 @@ char	*check_cmd_path(char *cmd, char **paths)
 	}
 	return (NULL);
 }
+
+void	clean_path(t_shell *shell)
+{
+	clean_array(shell->path);
+}
+

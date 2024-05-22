@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 08:25:11 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 15:07:54 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:16:11 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,24 @@ void	env(t_env	*env)
 		i = i->next;
 	}
 }
+void	clean_env(t_shell *shell)
+{
+	t_env	*env;
 
-// int	main(int argc, char **argv, char **environ)
-// {
-// 	t_env	*en;
+	if (!shell)
+		return ;
+	while (shell->env)
+	{
+		env = shell->env;
+		if (shell->env)
+			shell->env = shell->env->next;
+		if (env)
+		{
+			env->next = NULL;
+			env->prev = NULL;
+			clean_array(env->content);
+			free(env);
+		}
+	}
 
-// 	en = ft_get_env(environ);
-// 	while (en)
-// 	{
-// 		printf("%s\n",en->content[0]);
-// 		en = en->next;
-// 	}
-// 	// env(en);
-// 	// printf("current working directory : ");
-// 	// pwd();
-// 	// printf("deleting USER from env \n\n");
-// 	// // unset(&en, "PATH");
-// 	// export(&en, "sabo=brother");
-// 	// export(&en, "sabo=ace");
-// 	// export(&en, "TERM=luffyXXX");
-// 	// env(en);
-	
-// 	return (0);
-// }
+}

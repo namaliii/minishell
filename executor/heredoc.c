@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:32:10 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/22 14:26:22 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:45:51 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	heredoc_loop(t_token	*files, int *fd, t_shell *shell)
 
 	while (1)
 	{
-		heredoc_signals();
 		line = readline("> ");
 		if (!line)
 			break ;
@@ -65,6 +64,7 @@ void	heredoc(t_shell *shell)
 			{
 				assign_name(&files, &count);
 				fd = open_file_hd(shell, files->type, files->hd_name);
+				heredoc_signals();
 				heredoc_loop(files, &fd, shell);
 				close(fd);
 			}

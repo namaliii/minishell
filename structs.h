@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 15:40:28 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:49:28 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_shell
 	char			**path;
 	int				exit_code;
 	int				fd_pipe[2];
+	char			**builtins;
 }	t_shell;
 
 #endif

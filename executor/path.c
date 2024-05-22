@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:32:06 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/22 13:41:21 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:07:08 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char	*check_cmd_path(char *cmd, char **paths)
 	if (access(cmd, X_OK) == 0)
 		return (cmd);
 	i = 0;
+	if (!paths)
+		return (NULL);
 	while (paths[i])
 	{
 		cmd_cpy = ft_strdup(cmd);

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 13:41:01 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:51:55 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	shell_init(t_shell *shell, char **env)
 {
 	shell->env = ft_get_env(env);
 	shell->exit_code = 0;
+	shell->builtins = init_builtins();
 }
 
 void	shell_setup(t_shell *shell, char *line)
@@ -63,4 +64,21 @@ int	include_quotes(char *str)
 		i++;
 	}
 	return (0);
+}
+
+char	**init_builtins(void)
+{
+	char	**builtins;
+
+	builtins = malloc(7 * sizeof(char *));
+	if (!builtins)
+		return (NULL);
+	builtins[0] = ft_strdup("echo");
+	builtins[1] = ft_strdup("cd");
+	builtins[2] = ft_strdup("pwd");
+	builtins[3] = ft_strdup("export");
+	builtins[4] = ft_strdup("unset");
+	builtins[5] = ft_strdup("env");
+	builtins[6] = NULL;
+	return (builtins);
 }

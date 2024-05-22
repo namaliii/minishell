@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 13:48:07 by mfaoussi         ###   ########.fr       */
+/*   Created: 2024/05/22 13:45:42 by mfaoussi          #+#    #+#             */
+/*   Updated: 2024/05/22 13:47:19 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#include "../minishell.h"
 
-# include "../minishell.h"
+void	pwd(void)
+{
+	char	cwd[1024];
 
-t_env					*ft_get_env(char **env);
-void					env(t_env	*env);
-int						echo(char **cmd);
-void					clean_env(t_shell *shell);
-void					pwd(void);
-
-#endif
+	if (getcwd(cwd, sizeof(cwd)) != NULL)
+		printf("%s\n",cwd);
+	else
+		printf("error getting cwd");
+}

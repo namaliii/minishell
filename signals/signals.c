@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:09:37 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/18 14:08:19 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:15:32 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	default_child_signals(void)
 	signal(SIGQUIT, SIG_DFL);
 }
 
-// void	heredoc_signals(void)
-// {
-// 	signal(SIGINT, SIG_DFL);
-// 	signal(SIGQUIT, SIG_IGN);
-// }
+void	heredoc_signals(void)
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_IGN);
+}
 
 void	ignore_signals(void)
 {

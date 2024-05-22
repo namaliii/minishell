@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 14:07:35 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:59:09 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	main(int argc, char **argv, char **envp)
 	if (argc != 1 || *argv == NULL)
 		return (2);
 	shell_init(&shell, envp);
+	env(shell.env);
+	unset(&(shell.env), "PATH");
+	printf("break \n\n\n\n\n\n");
+	env(shell.env);
 	while (1)
 	{
 		setup_signals();

@@ -6,11 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 10:35:40 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:04:42 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:19:34 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../minishell.h"
+#include "../minishell.h"
 
 int	ft_strncmp(char *s1, char *s2, size_t n)
 {

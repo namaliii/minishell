@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:15:38 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:31:27 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	main(int argc, char **argv, char **envp)
 				printf("quotes Error\n");
 			add_history(line);
 			free(line);
+			// printf("****** checking env update ****");
+			// env(shell.env);
 		}
 	}
 	return (0);

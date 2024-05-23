@@ -10,6 +10,7 @@
 		"readline.h": "c",
 		"algorithm": "c",
 		"termios.h": "c",
-		"signal.h": "c"
+		"signal.h": "c",
+		"sstream": "c"
 	}
 }

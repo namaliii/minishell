@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/18 17:19:49 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:18:43 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ void			*ft_calloc(size_t count, size_t size);
 void			ft_putstr_fd(char *s, int fd);
 int				ft_isdigit(int c);
 char			*ft_itoa(int n);
+int				ft_isalpha(int c);
+int				ft_isalnum(int c);
+char			*ft_strdup2(const char *str, int limit);
 
 #endif

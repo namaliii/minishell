@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:51:55 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:02:40 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	shell_setup(t_shell *shell, char *line)
 	set_hd_expanded(&(shell->tokens));
 	expand_all(shell);
 	shell->s_cmd = NULL;
-	if (shell->tokens == NULL)
-		printf("can't print tokens because it null\n");
-	else
-		print_tokens(shell->tokens);
+	// if (shell->tokens == NULL)
+	// 	// printf("can't print tokens because it null\n");
+	// else
+	// 	print_tokens(shell->tokens);
 	parser(&(shell->tokens), &(shell->s_cmd));
 }
 

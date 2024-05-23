@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:58:43 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 18:21:00 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:31:27 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,48 @@ void	export(t_shell *shell, t_node *index)
 				if (check_export(index->cmd[i], equal) == 1)
 					print_export_error(index->cmd[i]);
 				else
-					add_to_env(index->cmd[i], shell);
+					update_env(index->cmd[i], shell);
 			}
 		}
 		i++;
+	}
+}
+
+t_env	*point_to_env(char *key, t_shell *shell)
+{
+	t_env	*env;
+
+	env = shell->env;
+	while (env)
+	{
+		if (ft_strncmp(key, env->content[0], ft_strlen(key)) == 0)
+		{
+			if (ft_strlen(key) == ft_strlen(env->content[0]))
+				return (env);
+		}
+		env = env->next;
+	}
+	return (NULL);
+}
+
+void	update_env(char *str, t_shell *shell)
+{
+	t_env	*index;
+	char	*s;
+	char	*key;
+
+	key = ft_strdup2(str, get_equal_position(str));
+	index = point_to_env(key, shell);
+	free(key);
+	if (index != NULL)
+	{
+		free(index->content[1]);
+		s = ft_strdup(str + get_equal_position(str) + 1);
+		index->content[1] = s;
+	}
+	else
+	{
+		add_to_env(str, shell);
 	}
 }
 

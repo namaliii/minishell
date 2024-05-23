@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 18:24:03 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:20:23 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ void					add_to_env(char *str, t_shell *shell);
 void					print_export_error(char *str);
 int						get_equal_position(char *str);
 int						check_equal(char *str);
+t_env					*point_to_env(char *key, t_shell *shell);
+void					update_env(char *str, t_shell *shell);
+
 
 #endif

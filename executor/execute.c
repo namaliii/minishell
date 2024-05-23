@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/23 19:01:48 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:24:15 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,26 +80,29 @@ void	execute(t_shell *shell)
 	// print_char(shell->builtins);
 	// if (ft_strncmp("echo", index->cmd[0], 4) == 0)
 	// 	echo(index->cmd);
-	// if (ft_strncmp("export", index->cmd[0], 6) == 0)
-	// 	export(shell, index);
-	// else
-	// {
-	heredoc(shell);
-	// print_hd_names(shell);
-	while (index)
+	env(shell->env);
+	printf("*********************\n");
+	if (ft_strncmp("export", index->cmd[0], 6) == 0)
+		export(shell, index);
+	else
 	{
-		ignore_signals();
-		create_pipe(shell, index);
-		pid = fork();
-		fork_check(shell, pid);
-		if (pid == 0)
-			execute_child(shell, index, shell->fd_pipe);
-		else
-			execute_parent(&index, shell->fd_pipe);
+		heredoc(shell);
+		// print_hd_names(shell);
+		while (index)
+		{
+			ignore_signals();
+			create_pipe(shell, index);
+			pid = fork();
+			fork_check(shell, pid);
+			if (pid == 0)
+				execute_child(shell, index, shell->fd_pipe);
+			else
+				execute_parent(&index, shell->fd_pipe);
+		}
+		restore_std(&tmpin, &tmpout);
+		waitpid(pid, &status, 0);
+		shell->exit_code = WEXITSTATUS(status);
 	}
-	restore_std(&tmpin, &tmpout);
-	waitpid(pid, &status, 0);
-	shell->exit_code = WEXITSTATUS(status);
-	// }
+	env(shell->env);
 }
 

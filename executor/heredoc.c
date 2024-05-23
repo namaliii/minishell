@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:32:10 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/22 17:45:51 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 22:19:17 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@ void	heredoc_loop(t_token	*files, int *fd, t_shell *shell)
 {
 	char	*line;
 	char	*expanded;
+	int		status;
+    pid_t 	pid;
 
+	pid = fork();
+    if (pid == 0)
+    {
+    heredoc_signals();
 	while (1)
 	{
 		line = readline("> ");
@@ -44,6 +50,12 @@ void	heredoc_loop(t_token	*files, int *fd, t_shell *shell)
 		}
 		free(line);
 	}
+	exit(1);
+	}
+    else
+    {
+        waitpid(pid,&status, 0);
+    }
 }
 
 void	heredoc(t_shell *shell)
@@ -55,6 +67,7 @@ void	heredoc(t_shell *shell)
 
 	count = 0;
 	s_cmd = shell->s_cmd;
+	ignore_signals();
 	while (s_cmd)
 	{
 		files = s_cmd->files;
@@ -64,7 +77,6 @@ void	heredoc(t_shell *shell)
 			{
 				assign_name(&files, &count);
 				fd = open_file_hd(shell, files->type, files->hd_name);
-				heredoc_signals();
 				heredoc_loop(files, &fd, shell);
 				close(fd);
 			}

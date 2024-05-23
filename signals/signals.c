@@ -3,55 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:09:37 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/22 17:46:08 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 22:20:37 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	parent_signals(int sig)
+void sig_ignore_her_doc(int sig)
 {
-	if (sig == SIGINT)
-	{
-		ft_putstr_fd("\n", STDOUT_FILENO);
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
-	}
+    (void)sig;
+    ft_putstr_fd("\n", STDOUT_FILENO);
+    exit(1);
 }
-
-void	default_child_signals(void)
+void    parent_signals(int sig)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
+    if (sig == SIGINT)
+    {
+        ft_putstr_fd("\n", STDOUT_FILENO);
+        rl_replace_line("", 0);
+        rl_on_new_line();
+        rl_redisplay();
+    }
 }
-
-void	heredoc_signals(void)
+void    default_child_signals(void)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_IGN);
+    signal(SIGINT, SIG_DFL);
+    signal(SIGQUIT, SIG_DFL);
 }
-
-void	ignore_signals(void)
+void    heredoc_signals(void)
 {
-	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
+    signal(SIGINT, sig_ignore_her_doc);
+    signal(SIGQUIT, SIG_IGN);
 }
-
-void	setup_signals(void)
+void    ignore_signals(void)
 {
-	struct sigaction	sa_sigint;
-	struct termios		termios_settings;
-
-	sa_sigint = (struct sigaction){};
-
-	tcgetattr(0, &termios_settings);
-	termios_settings.c_lflag &= ~ECHOCTL;
-	tcsetattr(0, 0, &termios_settings);
-	sa_sigint.sa_handler = parent_signals;
-	sigaction(SIGINT, &sa_sigint, NULL);
-	signal(SIGQUIT, SIG_IGN);
+    signal(SIGINT, SIG_IGN);
+    signal(SIGQUIT, SIG_IGN);
+}
+void    setup_signals(void)
+{
+    struct sigaction    sa_sigint;
+    struct termios      termios_settings;
+    sa_sigint = (struct sigaction){};
+    tcgetattr(0, &termios_settings);
+    termios_settings.c_lflag &= ~ECHOCTL;
+    tcsetattr(0, 0, &termios_settings);
+    sa_sigint.sa_handler = parent_signals;
+    sigaction(SIGINT, &sa_sigint, NULL);
+    signal(SIGQUIT, SIG_IGN);
 }

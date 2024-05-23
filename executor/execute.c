@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/23 19:24:15 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 22:14:38 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ void	execute(t_shell *shell)
 	// print_char(shell->builtins);
 	// if (ft_strncmp("echo", index->cmd[0], 4) == 0)
 	// 	echo(index->cmd);
-	env(shell->env);
-	printf("*********************\n");
-	if (ft_strncmp("export", index->cmd[0], 6) == 0)
-		export(shell, index);
-	else
-	{
+	// env(shell->env);
+	// printf("*********************\n");
+	// if (ft_strncmp("export", index->cmd[0], 6) == 0)
+	// 	export(shell, index);
+	// else
+	// {
 		heredoc(shell);
 		// print_hd_names(shell);
 		while (index)
@@ -102,7 +102,7 @@ void	execute(t_shell *shell)
 		restore_std(&tmpin, &tmpout);
 		waitpid(pid, &status, 0);
 		shell->exit_code = WEXITSTATUS(status);
-	}
-	env(shell->env);
+	// }
+	// env(shell->env);
 }
 

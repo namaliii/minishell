@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 17:07:24 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:03:29 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	expand_all(t_shell *shell)
 	index = shell->tokens;
 	if (!index)
 	{
-		printf("expansion failed\n");
+		// printf("expansion failed\n");
 		return ;
 	}
 	while (index)

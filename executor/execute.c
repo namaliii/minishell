@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/22 18:51:13 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:01:48 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,11 @@ void	execute(t_shell *shell)
 	tmpout = dup(STDOUT_FILENO);
 	tmpin = dup(STDIN_FILENO);
 	index = shell->s_cmd;
-	print_char(shell->builtins);
+	// print_char(shell->builtins);
 	// if (ft_strncmp("echo", index->cmd[0], 4) == 0)
 	// 	echo(index->cmd);
+	// if (ft_strncmp("export", index->cmd[0], 6) == 0)
+	// 	export(shell, index);
 	// else
 	// {
 	heredoc(shell);

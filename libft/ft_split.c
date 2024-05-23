@@ -6,11 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:48:13 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:04:34 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:19:13 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../minishell.h"
+#include "../minishell.h"
 
 static char	*put(char const *str, int *index, char c)
 {

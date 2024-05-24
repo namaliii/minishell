@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:00:10 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/24 16:05:58 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:00:13 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ void	execute_builtins(t_node *index, t_shell *shell)
 	if (ft_strncmp("env", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
 		env(shell->env);
 	else if (ft_strncmp("echo", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
-	{
 		echo(index->cmd);
-	}
 	else if (ft_strncmp("export", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
-	{
 		export(shell, index);
-	}
 	else if (ft_strncmp("pwd", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
 		pwd();
+	else if (ft_strncmp("unset", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
+		unset(&(shell->env), index);
 
 }

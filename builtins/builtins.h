@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/24 13:28:15 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:01:47 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void					env(t_env	*env);
 int						echo(char **cmd);
 void					pwd(void);
-void					unset(t_env **env, char *str);
+void					unset(t_env **env, t_node *index);
 void					export(t_shell *shell, t_node *index);
 
 // builtins helper***********

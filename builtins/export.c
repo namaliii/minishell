@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:58:43 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 19:31:27 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:03:40 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	add_to_env(char *str, t_shell *shell)
 
 void	print_export_error(char *str)
 {
-	printf("export: \'%s\': : not a valid identifier", str);
+	printf("export: \'%s\': not a valid identifier\n", str);
 }
 int	get_equal_position(char *str)
 {

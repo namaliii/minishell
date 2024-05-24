@@ -6,15 +6,26 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:23:20 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 17:51:57 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:01:32 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	unset(t_env **env, char *str)
+void	unset(t_env **env, t_node *index)
 {
-	env_delete(env, str);
+	int	i;
+
+	i = 1;
+	if (!index || !env || !*env)
+		return ;
+	if (index->cmd[1] == NULL)
+		return ;
+	while (index->cmd[i])
+	{
+		env_delete(env, index->cmd[i]);
+		i++;
+	}
 }
 
 void	env_delete(t_env **env, char *var)

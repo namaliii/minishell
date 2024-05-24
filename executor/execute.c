@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/24 16:11:32 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:36:13 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,12 @@ void	execute(t_shell *shell)
 	index = shell->s_cmd;
 	heredoc(shell);
 	if (index && index->next == NULL && is_builtin(shell, index->cmd[0]) == 1)
+	{
+		if (index->files)
+			open_redirect_files(shell, index);
 		execute_builtins(index, shell);
+		restore_std(&tmpin, &tmpout);
+	}
 	else
 	{
 		while (index)

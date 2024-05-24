@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 19:20:23 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:28:15 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int						check_equal(char *str);
 t_env					*point_to_env(char *key, t_shell *shell);
 void					update_env(char *str, t_shell *shell);
 
+int						is_builtin(t_shell *shell, char *cmd);
+void					execute_builtins(t_node *index, t_shell *shell);
 
 #endif

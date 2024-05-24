@@ -3,21 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/23 22:14:38 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:11:32 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+// void	execute_child_sg(t_shell *shell, t_node *index)
+// {
+// 	char	*full_path;
+
+// 	default_child_signals();
+// 	if (index->cmd[0])
+// 	{
+// 		full_path = check_cmd_path(index->cmd[0], shell->path);
+// 		path_check(shell, full_path, index->cmd[0]);
+// 	}
+// 	if (index->files)
+// 		open_redirect_files(shell, index);
+// 	if (index->cmd[0])
+// 		exec_check(shell, full_path, index->cmd, NULL);
+// 	else
+// 		exit(0);
+// }
+
 
 void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 {
 	char	*full_path;
 
 	default_child_signals();
-	if (index->cmd[0])
+	if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 0)
 	{
 		full_path = check_cmd_path(index->cmd[0], shell->path);
 		path_check(shell, full_path, index->cmd[0]);
@@ -30,10 +49,11 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 	}
 	if (index->files)
 		open_redirect_files(shell, index);
-	if (index->cmd[0])
+	if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 0)
 		exec_check(shell, full_path, index->cmd, NULL);
-	else
-		exit(0);
+	else if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 1)
+		execute_builtins(index, shell);
+	exit(0);
 }
 
 void	execute_parent(t_node **index, int *fd_pipe)
@@ -77,17 +97,11 @@ void	execute(t_shell *shell)
 	tmpout = dup(STDOUT_FILENO);
 	tmpin = dup(STDIN_FILENO);
 	index = shell->s_cmd;
-	// print_char(shell->builtins);
-	// if (ft_strncmp("echo", index->cmd[0], 4) == 0)
-	// 	echo(index->cmd);
-	// env(shell->env);
-	// printf("*********************\n");
-	// if (ft_strncmp("export", index->cmd[0], 6) == 0)
-	// 	export(shell, index);
-	// else
-	// {
-		heredoc(shell);
-		// print_hd_names(shell);
+	heredoc(shell);
+	if (index && index->next == NULL && is_builtin(shell, index->cmd[0]) == 1)
+		execute_builtins(index, shell);
+	else
+	{
 		while (index)
 		{
 			ignore_signals();
@@ -102,7 +116,6 @@ void	execute(t_shell *shell)
 		restore_std(&tmpin, &tmpout);
 		waitpid(pid, &status, 0);
 		shell->exit_code = WEXITSTATUS(status);
-	// }
-	// env(shell->env);
+	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:00:10 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/24 13:27:52 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:05:58 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ void	execute_builtins(t_node *index, t_shell *shell)
 		env(shell->env);
 	else if (ft_strncmp("echo", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
 	{
-		printf("blalblalbal\n");
 		echo(index->cmd);
 	}
 	else if (ft_strncmp("export", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
 	{
-		printf("/** executing exp[prt ] \n\n");
 		export(shell, index);
 	}
 	else if (ft_strncmp("pwd", index->cmd[0], ft_strlen(index->cmd[0])) == 0)

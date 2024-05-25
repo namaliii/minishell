@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:46:09 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 18:19:55 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/25 14:23:00 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
+	if (!s || *s == '\0')
+		return (0);
 	i = 0;
 	while (s[i] != '\0')
 		i++;

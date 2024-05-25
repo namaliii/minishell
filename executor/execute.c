@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/25 12:30:44 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:08:22 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ void	execute(t_shell *shell)
 		}
 		restore_std(&tmpin, &tmpout);
 		waitpid(pid, &status, 0);
+		// waitpid(pid, &status, 0);
+
 		shell->exit_code = WEXITSTATUS(status);
 	}
 }

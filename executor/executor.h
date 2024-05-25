@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 13:25:07 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/25 12:55:08 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,9 @@ void	assign_name(t_token **file, int *count);
 // void	print_hd_names(t_shell *shell);
 int		open_file_hd(t_shell *shell, int type, char *file_name);
 void	clean_path(t_shell *shell);
+
+char	**exec_env(t_shell *shell);
+int		get_t_env_length(t_env *env);
+char	*get_char_env_line(t_env *s_env);
 
 #endif

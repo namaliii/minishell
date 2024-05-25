@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/24 18:36:13 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/25 12:30:44 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 // 		exit(0);
 // }
 
-
 void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 {
 	char	*full_path;
@@ -50,7 +49,7 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 	if (index->files)
 		open_redirect_files(shell, index);
 	if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 0)
-		exec_check(shell, full_path, index->cmd, NULL);
+		exec_check(shell, full_path, index->cmd, exec_env(shell));
 	else if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 1)
 		execute_builtins(index, shell);
 	exit(0);
@@ -123,4 +122,3 @@ void	execute(t_shell *shell)
 		shell->exit_code = WEXITSTATUS(status);
 	}
 }
-

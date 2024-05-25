@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 08:25:11 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/24 18:00:58 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/25 11:46:11 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,4 @@ void	clean_env(t_shell *shell)
 			free(env);
 		}
 	}
-
 }

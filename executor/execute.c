@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/25 15:08:22 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/26 15:50:45 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,15 @@ void	create_pipe(t_shell *shell, t_node *index)
 	}
 }
 
+void	ft_wait_all(int *status)
+{
+	int	gpid;
+
+	gpid = wait(status);
+	while (gpid > 0)
+		gpid = wait(status);
+}
+
 void	execute(t_shell *shell)
 {
 	t_node	*index;
@@ -118,7 +127,10 @@ void	execute(t_shell *shell)
 				execute_parent(&index, shell->fd_pipe);
 		}
 		restore_std(&tmpin, &tmpout);
-		waitpid(pid, &status, 0);
+		ft_wait_all(&status);
+		// while (wait(&status) > 0)
+		// 	continue ;
+		// waitpid(pid, &status, 0);
 		// waitpid(pid, &status, 0);
 
 		shell->exit_code = WEXITSTATUS(status);

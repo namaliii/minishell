@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:02:28 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:03:21 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:34:31 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,3 @@ void	get_tokens(char *input, int *i, int *start, t_token **tokens)
 	*i = *i + size - 1;
 	*start = *i;
 }
-

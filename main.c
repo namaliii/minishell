@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/25 11:24:04 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:52:02 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,27 @@ int	main(int argc, char **argv, char **envp)
 		else
 		{
 			if (check_quotes(line) == 0)
-			{
-				shell_setup(&shell, line);
-				execute(&shell);
-				clean_nodes(&(shell.s_cmd));
-				clean_path(&shell);
-			}
+				shell_routine(&shell, line);
 			else
 				printf("quotes Error\n");
 			add_history(line);
 			free(line);
-			// printf("****** checking env update ****");
-			// env(shell.env);
 		}
 	}
 	return (0);
 }
 
+void	shell_routine(t_shell *shell, char *line)
+{
+	shell_setup(shell, line);
+	execute(shell);
+	clean_nodes(&(shell->s_cmd));
+	clean_path(shell);
+}
+
+			// {
+			// 	shell_setup(&shell, line);
+			// 	execute(&shell);
+			// 	clean_nodes(&(shell.s_cmd));
+			// 	clean_path(&shell);
+			// }

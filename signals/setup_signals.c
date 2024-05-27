@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.h                                          :+:      :+:    :+:   */
+/*   setup_signals.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 13:20:29 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/27 17:57:00 by mfaoussi         ###   ########.fr       */
+/*   Created: 2024/05/27 17:56:26 by mfaoussi          #+#    #+#             */
+/*   Updated: 2024/05/27 17:56:55 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	parent_signals(int sig);
-void	default_child_signals(void);
-void	ignore_signals(void);
-void	setup_signals(void);
-void	heredoc_signals(void);
+void	setup_signals(void)
+{
+	struct sigaction	sa_sigint;
+	struct termios		termios_settings;
+
+	sa_sigint = (struct sigaction){};
+	tcgetattr(0, &termios_settings);
+	termios_settings.c_lflag &= ~ECHOCTL;
+	tcsetattr(0, 0, &termios_settings);
+	sa_sigint.sa_handler = parent_signals;
+	sigaction(SIGINT, &sa_sigint, NULL);
+	signal(SIGQUIT, SIG_IGN);
+}

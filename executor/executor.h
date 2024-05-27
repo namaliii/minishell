@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/25 12:55:08 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:29:20 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	clean_path(t_shell *shell);
 char	**exec_env(t_shell *shell);
 int		get_t_env_length(t_env *env);
 char	*get_char_env_line(t_env *s_env);
+void	ft_wait_all(int *status);
 
 #endif

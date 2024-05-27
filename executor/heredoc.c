@@ -3,59 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:32:10 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/23 22:19:17 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:26:37 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	heredoc_loop(t_token	*files, int *fd, t_shell *shell)
+void	heredoc_loop(t_token *files, int *fd, t_shell *shell)
 {
 	char	*line;
 	char	*expanded;
 	int		status;
-    pid_t 	pid;
+	pid_t	pid;
 
 	pid = fork();
-    if (pid == 0)
-    {
-    heredoc_signals();
-	while (1)
+	if (pid == 0)
 	{
-		line = readline("> ");
-		if (!line)
-			break ;
-		if (ft_strlen(line) == ft_strlen(files->next->content))
+		heredoc_signals();
+		while (1)
 		{
-			if (ft_strncmp(line, files->next->content, ft_strlen(line)) == 0)
-			{
-				free(line);
+			line = readline("> ");
+			if (!line)
 				break ;
-			}
-		}
-		else
-		{
-			if (files->hd_expanded == 0)
+			if (ft_strlen(line) == ft_strlen(files->next->content))
 			{
-				expanded = expand(line, shell);
-				write(*fd, expanded, ft_strlen(expanded));
-				free(expanded);
+				if (ft_strncmp(line, files->next->content, ft_strlen(line)) == 0)
+				{
+					free(line);
+					break ;
+				}
 			}
 			else
-				write(*fd, line, ft_strlen(line));
-			write(*fd, "\n", 1);
+			{
+				if (files->hd_expanded == 0)
+				{
+					expanded = expand(line, shell);
+					write(*fd, expanded, ft_strlen(expanded));
+					free(expanded);
+				}
+				else
+					write(*fd, line, ft_strlen(line));
+				write(*fd, "\n", 1);
+			}
+			free(line);
 		}
-		free(line);
+		exit(1);
 	}
-	exit(1);
+	else
+	{
+		waitpid(pid, &status, 0);
 	}
-    else
-    {
-        waitpid(pid,&status, 0);
-    }
 }
 
 void	heredoc(t_shell *shell)
@@ -85,7 +85,6 @@ void	heredoc(t_shell *shell)
 		s_cmd = s_cmd->next;
 	}
 }
-
 
 void	assign_name(t_token **file, int *count)
 {
@@ -125,7 +124,8 @@ void	assign_name(t_token **file, int *count)
 // 		while (files)
 // 		{
 // 			if (files->type == HEREDOC)
-// 				printf("delimiter : %s expande : %d \n",files->next->content, files->hd_expanded);
+// 				printf("delimiter : %s expande : %d \n"
+// 				,files->next->content, files->hd_expanded);
 // 			files = files->next;
 // 		}
 // 		s_cmd = s_cmd->next;

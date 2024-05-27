@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:32:06 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/22 18:07:08 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:27:04 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ void	clean_path(t_shell *shell)
 {
 	clean_array(shell->path);
 }
-

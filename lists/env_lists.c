@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 08:34:24 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 15:01:20 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:49:59 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	env_add_back(t_env **lst, t_env *new)
 		index->next = new;
 		new->prev = index;
 	}
-
 }
 
 t_env	*env_new(char **content)

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 08:25:11 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/25 11:46:11 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 16:55:39 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,15 @@ void	env(t_env	*env)
 	while (i)
 	{
 		if (i->content[0])
-			printf("%s=",i->content[0]);
+			printf("%s=", i->content[0]);
 		if (i->content[1])
-			printf("%s\n",i->content[1]);
+			printf("%s\n", i->content[1]);
 		else
 			printf("\n");
 		i = i->next;
 	}
 }
+
 void	clean_env(t_shell *shell)
 {
 	t_env	*env;

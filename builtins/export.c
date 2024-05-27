@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:58:43 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 13:20:10 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:09:01 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ void	export(t_shell *shell, t_node *index)
 	while (index->cmd[i])
 	{
 		if (check_equal(index->cmd[i]) == 0)
-		{
-			if (check_export(index->cmd[i], ft_strlen(index->cmd[i])) == 1)
-				print_export_error(index->cmd[i]);
-		}
+			check_export_error(index->cmd[i]);
 		else
 		{
 			equal = get_equal_position(index->cmd[i]);
@@ -125,40 +122,6 @@ void	add_to_env(char *str, t_shell *shell)
 	if (!new)
 		return ;
 	env_add_back(&(shell->env), new);
-}
-
-void	print_export_error(char *str)
-{
-	printf("export: \'%s\': not a valid identifier\n", str);
-}
-int	get_equal_position(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '=')
-			return (i);
-		i++;
-	}
-	return (0);
-}
-
-int	check_equal(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str || str[0] == '\0')
-		return (0);
-	while (str[i])
-	{
-		if (str[i] == '=')
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 // int main(void)

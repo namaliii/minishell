@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:45:42 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 12:33:19 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:09:21 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	pwd(void)
 	char	cwd[1024];
 
 	if (getcwd(cwd, sizeof(cwd)) != NULL)
-		printf("%s\n",cwd);
+		printf("%s\n", cwd);
 	else
 		printf("error getting cwd");
 }

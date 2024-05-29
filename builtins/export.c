@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:58:43 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/29 15:57:00 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:19:34 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,6 @@ void	update_env(char *str, t_shell *shell)
 	{
 		free(index->content[1]);
 		s = ft_strdup(str + get_equal_position(str) + 1);
-		// if (s == NULL)
-		// 	printf("yes s is null\n");
-		// else
-		// 	printf("no s is not null");
 		index->content[1] = s;
 	}
 	else

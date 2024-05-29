@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 18:52:02 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:20:42 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	main(int argc, char **argv, char **envp)
 			return (0);
 		else
 		{
-			if (check_quotes(line) == 0)
-				shell_routine(&shell, line);
+			if (check_quotes(line) == 1)
+				printf("quotes error!\n");
 			else
-				printf("quotes Error\n");
+				shell_routine(&shell, line);
 			add_history(line);
 			free(line);
 		}
@@ -43,15 +43,10 @@ int	main(int argc, char **argv, char **envp)
 
 void	shell_routine(t_shell *shell, char *line)
 {
-	shell_setup(shell, line);
-	execute(shell);
-	clean_nodes(&(shell->s_cmd));
-	clean_path(shell);
+	if (shell_setup(shell, line) == 0)
+	{
+		execute(shell);
+		clean_nodes(&(shell->s_cmd));
+		clean_path(shell);
+	}
 }
-
-			// {
-			// 	shell_setup(&shell, line);
-			// 	execute(&shell);
-			// 	clean_nodes(&(shell.s_cmd));
-			// 	clean_path(&shell);
-			// }

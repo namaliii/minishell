@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.h                                           :+:      :+:    :+:   */
+/*   crawler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/29 17:06:32 by mfaoussi         ###   ########.fr       */
+/*   Created: 2024/05/29 17:26:03 by mfaoussi          #+#    #+#             */
+/*   Updated: 2024/05/29 17:26:21 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKS_H
-# define CHECKS_H
+#include "../minishell.h"
 
-# include "../minishell.h"
-
-int							check_quotes(char *input);
-bool						has_open_quotes(char *str);
-int							check_red_correct(t_shell *shell);
-
-#endif
+int	stop_crawling(int c)
+{
+	if (ft_isspace(c) == 1 || (c >= 32 && c <= 47) || (c >= 58 && c <= 64) \
+		|| (c > 90 && c < 97) || (c > 122 && c < 127) || c == '\0')
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}

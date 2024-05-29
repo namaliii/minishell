@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 17:31:13 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:26:37 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,29 @@ void	expand_all(t_shell *shell)
 	}
 }
 
-void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
+void	actually_expand(int *i, char *str, t_char **new, t_shell *shell)
 {
-	char	tmp[100];
 	int		start;
+	char	tmp[100];
 	char	*to_expand;
 
+	*i = *i + 1;
+	start = *i;
+	while (str[*i] && stop_crawling(str[*i]) == 0)
+	{
+		*i = *i + 1;
+	}
+	init_tmp(tmp, start, *i - 1, str);
+	to_expand = get_env_value(shell, tmp);
+	if (to_expand != NULL)
+	{
+		extract_tmp(to_expand, new);
+		free(to_expand);
+	}
+}
+
+void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
+{
 	if (str[*i] == '$' && ft_isdigit(str[*i + 1]) == 1)
 		*i = *i + 2;
 	else if (str[*i] == '$' && str[*i + 1] == '$')
@@ -112,32 +129,5 @@ void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 	else if (str[*i] == '$' && stop_crawling(str[*i + 1]) == 1)
 		handle_simple_char(i, str, new);
 	else
-	{
-		*i = *i + 1;
-		start = *i;
-		while (str[*i] && stop_crawling(str[*i]) == 0)
-		{
-			*i = *i + 1;
-		}
-		init_tmp(tmp, start, *i - 1, str);
-		to_expand = get_env_value(shell, tmp);
-		if (to_expand != NULL)
-		{
-			extract_tmp(to_expand, new);
-			free(to_expand);
-		}
-	}
-}
-
-int	stop_crawling(int c)
-{
-	if (ft_isspace(c) == 1 || (c >= 32 && c <= 47) || (c >= 58 && c <= 64) \
-		|| (c > 90 && c < 97) || (c > 122 && c < 127) || c == '\0')
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
+		actually_expand(i, str, new, shell);
 }

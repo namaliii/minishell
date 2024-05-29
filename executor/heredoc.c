@@ -6,16 +6,46 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:32:10 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/27 17:26:37 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:16:50 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+int	delimiter_is_met(t_token *files, char *line)
+{
+	if (ft_strlen(line) == ft_strlen(files->next->content))
+	{
+		if (ft_strncmp(line, files->next->content, ft_strlen(line)) == 0)
+		{
+			free(line);
+			return (1);
+		}
+	}
+	return (0);
+}
+
+void	heredoc_norm(t_shell *shell, t_token *files, char *line, int *fd)
+{
+	char	*expanded;
+
+	if (files->hd_expanded == 0)
+	{
+		expanded = expand(line, shell);
+		if (expanded)
+		{
+			write(*fd, expanded, ft_strlen(expanded));
+			free(expanded);
+		}
+	}
+	else
+		write(*fd, line, ft_strlen(line));
+	write(*fd, "\n", 1);
+}
+
 void	heredoc_loop(t_token *files, int *fd, t_shell *shell)
 {
 	char	*line;
-	char	*expanded;
 	int		status;
 	pid_t	pid;
 
@@ -28,34 +58,16 @@ void	heredoc_loop(t_token *files, int *fd, t_shell *shell)
 			line = readline("> ");
 			if (!line)
 				break ;
-			if (ft_strlen(line) == ft_strlen(files->next->content))
-			{
-				if (ft_strncmp(line, files->next->content, ft_strlen(line)) == 0)
-				{
-					free(line);
-					break ;
-				}
-			}
+			if (delimiter_is_met(files, line) == 1)
+				break ;
 			else
-			{
-				if (files->hd_expanded == 0)
-				{
-					expanded = expand(line, shell);
-					write(*fd, expanded, ft_strlen(expanded));
-					free(expanded);
-				}
-				else
-					write(*fd, line, ft_strlen(line));
-				write(*fd, "\n", 1);
-			}
+				heredoc_norm(shell, files, line, fd);
 			free(line);
 		}
 		exit(1);
 	}
 	else
-	{
 		waitpid(pid, &status, 0);
-	}
 }
 
 void	heredoc(t_shell *shell)

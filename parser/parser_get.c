@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:48:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:05:53 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:52:51 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,3 @@ int	is_pipe(t_token *index)
 		return (1);
 	return (0);
 }
-

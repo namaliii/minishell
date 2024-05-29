@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 12:22:31 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:34:44 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void			remove_upfront_spaces(char *str, int *i, int *start);
 int				is_token(char *str);
 t_token_type	token_type(char *str);
 int				is_quote(char c);
-
 
 #endif

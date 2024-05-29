@@ -6,12 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:02:19 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 19:03:29 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:31:13 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-// handle_sg_quotes(&i, str, &new);
 
 char	*expand(char *str, t_shell *shell)
 {
@@ -77,7 +76,6 @@ void	expand_all(t_shell *shell)
 	index = shell->tokens;
 	if (!index)
 	{
-		// printf("expansion failed\n");
 		return ;
 	}
 	while (index)
@@ -96,8 +94,6 @@ void	expand_all(t_shell *shell)
 		}
 	}
 }
-
-
 
 void	handle_dollar(int *i, char *str, t_char **new, t_shell *shell)
 {

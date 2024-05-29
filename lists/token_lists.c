@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:07:13 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 15:53:23 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:52:01 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	token_add_back(t_token **lst, t_token *new)
 		index->next = new;
 		new->prev = index;
 	}
-
 }
 
 t_token	*token_new(char *content, t_token_type type)

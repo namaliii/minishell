@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_files.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/21 14:52:50 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:28:49 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	open_redirect_files(t_shell *shell, t_node *lst)
 	files_cpy = lst->files;
 	while (files_cpy->next)
 	{
-		// fprintf(stderr, "looping through the files\n");
-		// fprintf(stderr, "file type: %s, content: %s\n", files_cpy->content, files_cpy->next->content);
 		if (files_cpy->type >= INFILE && files_cpy->type <= HEREDOC)
 		{
 			if (files_cpy->type == HEREDOC)

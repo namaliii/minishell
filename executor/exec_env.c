@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 11:43:20 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/25 15:08:46 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:13:06 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ char	*get_char_env_line(t_env *s_env)
 
 int	get_t_env_length(t_env *env)
 {
-	int i;
-	t_env *index;
+	int		i;
+	t_env	*index;
 
 	if (!env)
 		return (0);

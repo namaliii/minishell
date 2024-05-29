@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/24 18:01:47 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:04:07 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int						echo(char **cmd);
 void					pwd(void);
 void					unset(t_env **env, t_node *index);
 void					export(t_shell *shell, t_node *index);
+void					cd(t_shell	*shell, t_node *index);
 
 // builtins helper***********
 
@@ -34,8 +35,9 @@ int						get_equal_position(char *str);
 int						check_equal(char *str);
 t_env					*point_to_env(char *key, t_shell *shell);
 void					update_env(char *str, t_shell *shell);
-
+void					check_export_error(char *str);
 int						is_builtin(t_shell *shell, char *cmd);
 void					execute_builtins(t_node *index, t_shell *shell);
+char					*get_pwd(void);
 
 #endif

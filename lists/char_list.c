@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:07:13 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/19 10:43:41 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:49:41 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	char_add_back(t_char **lst, t_char *new)
 		index = char_last(*lst);
 		index->next = new;
 	}
-
 }
 
 t_char	*char_new(char content)
@@ -72,4 +71,3 @@ t_char	*str_to_charlst(char *str)
 	}
 	return (lst);
 }
-

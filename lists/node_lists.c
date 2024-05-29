@@ -6,11 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:58:03 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/15 13:43:18 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:51:26 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../minishell.h"
+#include "../minishell.h"
 
 t_node	*node_last(t_node *lst)
 {

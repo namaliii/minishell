@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   setup_signals.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 13:45:42 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 17:09:21 by mfaoussi         ###   ########.fr       */
+/*   Created: 2024/05/27 17:56:26 by mfaoussi          #+#    #+#             */
+/*   Updated: 2024/05/27 17:56:55 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	pwd(void)
+void	setup_signals(void)
 {
-	char	cwd[1024];
+	struct sigaction	sa_sigint;
+	struct termios		termios_settings;
 
-	if (getcwd(cwd, sizeof(cwd)) != NULL)
-		printf("%s\n", cwd);
-	else
-		printf("error getting cwd");
-}
-
-char	*get_pwd(void)
-{
-	char	cwd[1024];
-	char	*pwd;
-
-	if (getcwd(cwd, sizeof(cwd)) != NULL)
-	{
-		pwd = ft_strdup(cwd);
-		return (pwd);
-	}
-	else
-		return (NULL);
+	sa_sigint = (struct sigaction){};
+	tcgetattr(0, &termios_settings);
+	termios_settings.c_lflag &= ~ECHOCTL;
+	tcsetattr(0, 0, &termios_settings);
+	sa_sigint.sa_handler = parent_signals;
+	sigaction(SIGINT, &sa_sigint, NULL);
+	signal(SIGQUIT, SIG_IGN);
 }

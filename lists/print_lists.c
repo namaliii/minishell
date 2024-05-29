@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_lists.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:31:37 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/20 19:33:06 by anamieta         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:51:48 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	print_tokens(t_token *lst)
 	index = lst;
 	while (index)
 	{
-		// printf("token : %s\n", index->content);
 		index = index->next;
 	}
 }
@@ -62,9 +61,9 @@ void	print_char(char **str)
 	while (str[i])
 	{
 		if (i == 0)
-			printf("cmd : %s\n",str[i]);
+			printf("cmd : %s\n", str[i]);
 		else
-			printf("arg : %s\n",str[i]);
+			printf("arg : %s\n", str[i]);
 		i++;
 	}
 }
@@ -82,4 +81,3 @@ void	print_c(t_char *lst)
 		index = index->next;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:18:55 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/27 14:26:10 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:03:40 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	path_check(t_shell *shell, char *full_path, char *cmd)
 		ft_putstr_fd(cmd, 2);
 		ft_putstr_fd(": command not found", 2);
 		ft_putstr_fd("\n", 2);
-		exit(127);
 		shell->exit_code = 127;
+		exit(127);
 	}
 }
 
@@ -34,8 +34,8 @@ void	exec_check(t_shell *shell, char *path, char **cmd, char **envp)
 		ft_putstr_fd(cmd[0], 2);
 		ft_putstr_fd(": command not found", 2);
 		ft_putstr_fd("\n", 2);
-		exit(126);
 		shell->exit_code = 126;
+		exit(126);
 	}
 }
 
@@ -61,6 +61,28 @@ void	fork_check(t_shell *shell, int pid)
 		shell->exit_code = 1;
 		exit(1);
 	}
+}
+
+int	check_red_correct(t_shell *shell)
+{
+	t_token	*index;
+
+	index = shell->tokens;
+	while (index)
+	{
+		if (index->type > WORD && index->type < PIPE)
+		{
+			if (!index->next || index->next->type != WORD)
+				return (1);
+		}
+		else if (index->type == PIPE)
+		{
+			if (!index->next)
+				return (1);
+		}
+		index = index->next;
+	}
+	return (0);
 }
 
 // void	fd_check(t_shell *shell, int fd)

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:15:07 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 17:17:20 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:01:57 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 	char	*full_path;
 
 	default_child_signals();
-	if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 0)
-	{
-		full_path = check_cmd_path(index->cmd[0], shell->path);
-		path_check(shell, full_path, index->cmd[0]);
-	}
 	if (index->next != NULL)
 	{
 		close(fd_pipe[0]);
@@ -30,6 +25,11 @@ void	execute_child(t_shell *shell, t_node *index, int *fd_pipe)
 	}
 	if (index->files)
 		open_redirect_files(shell, index);
+	if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 0)
+	{
+		full_path = check_cmd_path(index->cmd[0], shell->path);
+		path_check(shell, full_path, index->cmd[0]);
+	}
 	if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 0)
 		exec_check(shell, full_path, index->cmd, exec_env(shell));
 	else if (index->cmd[0] && is_builtin(shell, index->cmd[0]) == 1)

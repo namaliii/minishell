@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:18:55 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/29 17:03:40 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:03:32 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,3 @@ int	check_red_correct(t_shell *shell)
 	}
 	return (0);
 }
-
-// void	fd_check(t_shell *shell, int fd)
-// {
-// 	if (fd == -1)
-// 	{
-// 		ft_putstr_fd("minishell: ", 2);
-// 		ft_putstr_fd(shell->lst->files->file_name, 2);
-// 		ft_putstr_fd(": No such file or directory", 2);
-// 		ft_putstr_fd("\n", 2);
-// 		close(fd);
-// 		shell->exit_code = 127;
-// 		exit(127);
-// 	}
-// }

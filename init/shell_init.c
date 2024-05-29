@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:17 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/29 16:58:12 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:26:10 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	**init_builtins(void)
 {
 	char	**builtins;
 
-	builtins = malloc(7 * sizeof(char *));
+	builtins = malloc(8 * sizeof(char *));
 	if (!builtins)
 		return (NULL);
 	builtins[0] = ft_strdup("echo");
@@ -87,6 +87,7 @@ char	**init_builtins(void)
 	builtins[3] = ft_strdup("export");
 	builtins[4] = ft_strdup("unset");
 	builtins[5] = ft_strdup("env");
-	builtins[6] = NULL;
+	builtins[6] = ft_strdup("exit");
+	builtins[7] = NULL;
 	return (builtins);
 }

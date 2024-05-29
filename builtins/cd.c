@@ -6,13 +6,11 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:27:29 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 16:23:00 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:44:56 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void	update_pwd_oldpwd(t_shell *shell, char **old_path);
 
 void	cd(t_shell	*shell, t_node *index)
 {
@@ -24,19 +22,28 @@ void	cd(t_shell	*shell, t_node *index)
 	{
 		home = point_to_env("HOME", shell);
 		if (!home || home->content[1] == NULL)
-			printf("no Home for me \n");
+		{
+			printf("cd: HOME not set\n");
+			shell->exit_code = 1;
+		}
 		else
 		{
 			if (chdir(home->content[1]) != 0)
-				printf("path doesn't exist\n");
+				cd_print_error(shell, home->content[1]);
 		}
 	}
 	else
 	{
 		if (chdir(index->cmd[1]) != 0)
-			printf("path doesn't exist\n");
+			cd_print_error(shell, index->cmd[1]);
 	}
 	update_pwd_oldpwd(shell, &old_path);
+}
+
+void	cd_print_error(t_shell *shell, char *str)
+{
+	printf("cd: %s: No such file or directory\n", str);
+	shell->exit_code = 1;
 }
 
 void	update_pwd_oldpwd(t_shell *shell, char **old_path)

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:00:10 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 12:47:09 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:30:50 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,6 @@ void	execute_builtins(t_node *index, t_shell *shell)
 		unset(&(shell->env), index);
 	else if (ft_strncmp("cd", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
 		cd(shell, index);
+	else if (ft_strncmp("exit", index->cmd[0], ft_strlen(index->cmd[0])) == 0)
+		ft_exit(shell, index);
 }

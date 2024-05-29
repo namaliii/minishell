@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/23 18:18:43 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:16:11 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../minishell.h"
 
+int				ft_atoi(char *str);
 int				ft_isspace(char c);
 char			**ft_split(char const *str, char c);
 char			*ft_strdup(const char *str);

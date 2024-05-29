@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 17:04:07 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:31:08 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ void					check_export_error(char *str);
 int						is_builtin(t_shell *shell, char *cmd);
 void					execute_builtins(t_node *index, t_shell *shell);
 char					*get_pwd(void);
-
+void					cd_print_error(t_shell *shell, char *str);
+void					update_pwd_oldpwd(t_shell *shell, char **old_path);
+void					ft_exit(t_shell *shell, t_node *index);
+int						array_size(char **str);
 #endif

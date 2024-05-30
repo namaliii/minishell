@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 18:51:19 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:54:14 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <signal.h>
 # include <termios.h>
 # include <fcntl.h>
-
+# include <sys/wait.h>
 # include "signals/signals.h"
 # include "structs.h"
 # include "builtins/builtins.h"

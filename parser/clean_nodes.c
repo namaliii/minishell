@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:36:07 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 13:40:18 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:54:40 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,12 @@ void	clean_files(t_token **files)
 		index->prev = NULL;
 		free(index);
 	}
+}
+
+void	clean_shell(t_shell *shell)
+{
+	if (shell->builtins)
+		clean_array(shell->builtins);
+	if (shell->env)
+		clean_env(shell);
 }

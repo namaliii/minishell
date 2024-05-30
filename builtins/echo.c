@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 14:00:18 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/29 18:53:16 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:57:33 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	echo(char **cmd)
 		nflag = n_flag(cmd[start_idx]);
 	if (nflag == 1)
 	{
-		printf("");
+		// printf("");
 		if (cmd[start_idx + 1] != NULL)
 			start_idx++;
 		else

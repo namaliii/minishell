@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:32:10 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/29 18:16:50 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:11:18 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,23 +123,3 @@ void	assign_name(t_token **file, int *count)
 	index->hd_name[10] = *count + '0';
 	*count = *count + 1;
 }
-
-// void	print_hd_names(t_shell *shell)
-// {
-// 	t_node	*s_cmd;
-// 	t_token	*files;
-
-// 	s_cmd = shell->s_cmd;
-// 	while (s_cmd)
-// 	{
-// 		files = s_cmd->files;
-// 		while (files)
-// 		{
-// 			if (files->type == HEREDOC)
-// 				printf("delimiter : %s expande : %d \n"
-// 				,files->next->content, files->hd_expanded);
-// 			files = files->next;
-// 		}
-// 		s_cmd = s_cmd->next;
-// 	}
-// }

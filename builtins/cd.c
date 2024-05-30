@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:27:29 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/29 18:44:56 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:55:27 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	update_pwd_oldpwd(t_shell *shell, char **old_path)
 	old_pwd = point_to_env("OLDPWD", shell);
 	if (old_pwd->content[1])
 		free(old_pwd->content[1]);
-	old_pwd->content[1] = ft_strdup(*old_path);
+	old_pwd->content[1] = (*old_path);
 	path = get_pwd();
 	if (pwd)
 	{

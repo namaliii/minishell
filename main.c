@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:05:57 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/29 18:55:10 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:53:55 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,12 @@ int	main(int argc, char **argv, char **envp)
 		line = readline("$ ");
 		if (!line)
 			break ;
-		// if (ft_strncmp("exit", line, 4) == 0)
-		// 	return (0);
-		// else
-		// {
 		if (check_quotes(line) == 1)
 			printf("quotes error!\n");
 		else
 			shell_routine(&shell, line);
 		add_history(line);
 		free(line);
-		// }
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:32:06 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/27 17:27:04 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:53:33 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*check_cmd_path(char *cmd, char **paths)
 	int		i;
 	char	*aux;
 	char	*cmd_cpy;
+	char	*cmd_cpy2;
 
 	if (access(cmd, X_OK) == 0)
 		return (cmd);
@@ -48,10 +49,11 @@ char	*check_cmd_path(char *cmd, char **paths)
 		return (NULL);
 	while (paths[i])
 	{
-		cmd_cpy = ft_strdup(cmd);
+		cmd_cpy2 = ft_strdup(cmd);
 		aux = ft_strjoin(paths[i], "/");
-		cmd_cpy = ft_strjoin(aux, cmd_cpy);
+		cmd_cpy = ft_strjoin(aux, cmd_cpy2);
 		free(aux);
+		free(cmd_cpy2);
 		if (access(cmd_cpy, X_OK) == 0)
 			return (cmd_cpy);
 		free(cmd_cpy);

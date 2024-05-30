@@ -6,13 +6,13 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/29 19:30:27 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:18:53 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	exec_loop(t_shell *shell, t_node **index)
+void	exec_loop(t_shell *shell, t_node **index, int *tmpin, int *tmpout)
 {
 	int		pid;
 
@@ -23,7 +23,11 @@ void	exec_loop(t_shell *shell, t_node **index)
 		pid = fork();
 		fork_check(shell, pid);
 		if (pid == 0)
+		{
+			close(*tmpin);
+			close(*tmpout);
 			execute_child(shell, *index, shell->fd_pipe);
+		}
 		else
 			execute_parent(index, shell->fd_pipe);
 	}
@@ -49,7 +53,7 @@ void	execute(t_shell *shell)
 	}
 	else
 	{
-		exec_loop(shell, &index);
+		exec_loop(shell, &index, &tmpin, &tmpout);
 		restore_std(&tmpin, &tmpout);
 		ft_wait_all(&status);
 		shell->exit_code = WEXITSTATUS(status);

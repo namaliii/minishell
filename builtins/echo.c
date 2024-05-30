@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 14:00:18 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/30 16:57:33 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:29:35 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	n_flag(char *cmd)
 {
 	int	i;
 
-	i = 2;
 	if (cmd[0] != '-')
 		return (0);
 	i = 1;
@@ -29,14 +28,6 @@ int	n_flag(char *cmd)
 	return (1);
 }
 
-void	next_cmd_check(char *next_cmd, int nflag)
-{
-	if (next_cmd != NULL)
-		printf(" ");
-	else if (nflag != 1)
-		printf("\n");
-}
-
 int	echo(char **cmd)
 {
 	int	start_idx;
@@ -44,23 +35,19 @@ int	echo(char **cmd)
 
 	start_idx = 1;
 	nflag = 0;
-	if (cmd[start_idx] == NULL)
-		printf("\n");
-	if (cmd[start_idx])
-		nflag = n_flag(cmd[start_idx]);
-	if (nflag == 1)
+	while (cmd[start_idx] && n_flag(cmd[start_idx]))
 	{
-		// printf("");
-		if (cmd[start_idx + 1] != NULL)
-			start_idx++;
-		else
-			return (EXIT_SUCCESS);
+		nflag = 1;
+		start_idx++;
 	}
 	while (cmd[start_idx] != NULL)
 	{
 		printf("%s", cmd[start_idx]);
-		next_cmd_check(cmd[start_idx + 1], nflag);
+		if (cmd[start_idx + 1] != NULL)
+			printf(" ");
 		start_idx++;
 	}
+	if (!nflag)
+		printf("\n");
 	return (EXIT_SUCCESS);
 }

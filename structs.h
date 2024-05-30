@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:49:28 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:56:17 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_node
 typedef struct s_env
 {
 	char			**content;
+	int				export;
 	struct s_env	*next;
 	struct s_env	*prev;
 }				t_env;

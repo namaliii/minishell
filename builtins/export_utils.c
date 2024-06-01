@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:57:18 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 17:09:40 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:26:00 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,3 @@ void	check_export_error(char *str)
 	if (check_export(str, ft_strlen(str)) == 1)
 		print_export_error(str);
 }
-
-// if (check_export(index->cmd[i], ft_strlen(index->cmd[i])) == 1)
-				// print_export_error(index->cmd[i]);

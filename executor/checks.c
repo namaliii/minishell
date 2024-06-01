@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:18:55 by anamieta          #+#    #+#             */
-/*   Updated: 2024/06/01 14:36:37 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:06:53 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	check_red_correct(t_shell *shell)
 				return (1);
 		}
 		index = index->next;
+		i++;
 	}
 	return (0);
 }

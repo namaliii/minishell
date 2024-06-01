@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:45:25 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/30 16:56:39 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:40:16 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,13 @@ void	ft_exit(t_shell *shell, t_node *index)
 		}
 	}
 	else
-	{
-		clean_shell(shell);
-		exit(0);
-	}
+		exit_shell_clean(shell);
+}
+
+void	exit_shell_clean(t_shell *shell)
+{
+	clean_shell(shell);
+	exit(0);
 }
 
 int	array_size(char **str)

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 19:10:14 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/30 16:57:44 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:44:36 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,5 @@ int	ft_atoi(char *str)
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	// if (result > 2147483647 || result < -2147483648)
-	// 	return (0);
 	return (result * sign);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anamieta <anamieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 15:43:52 by anamieta          #+#    #+#             */
-/*   Updated: 2024/05/30 17:18:53 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:26:19 by anamieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,3 @@ void	execute(t_shell *shell)
 		shell->exit_code = WEXITSTATUS(status);
 	}
 }
-
-		// while (wait(&status) > 0)
-		// 	continue ;
-		// waitpid(pid, &status, 0);
-		// waitpid(pid, &status, 0);

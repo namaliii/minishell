@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/30 20:20:07 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:59:19 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int						array_size(char **str);
 void					export_solo(char *key, t_shell *shell);
 void					add_to_env_solo(char *str, t_shell *shell);
 void					exp_print(t_env	*env);
+void					exit_shell_clean(t_shell *shell);
 
 #endif

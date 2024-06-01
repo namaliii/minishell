@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:14:12 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 17:50:28 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:59:04 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_node				*node_new(char **cmd, t_token *files);
 
 t_env				*env_last(t_env *lst);
 void				env_add_back(t_env **lst, t_env *new);
-t_env				*env_new(char **content);
+t_env				*env_new(char **content, int export);
 
 /** char list manipulation */
 

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:58:43 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/29 18:19:34 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 20:21:26 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	export(t_shell *shell, t_node *index)
 
 	i = 1;
 	if (index->cmd[1] == NULL)
-		printf("export whatever\n");
+		exp_print(shell->env);
 	while (index->cmd[i])
 	{
 		if (check_equal(index->cmd[i]) == 0)
-			check_export_error(index->cmd[i]);
+			export_solo(index->cmd[i], shell);
 		else
 		{
 			equal = get_equal_position(index->cmd[i]);
@@ -58,6 +58,16 @@ void	export(t_shell *shell, t_node *index)
 			}
 		}
 		i++;
+	}
+}
+
+void	export_solo(char *key, t_shell *shell)
+{
+	if (check_export(key, ft_strlen(key)) == 1)
+		print_export_error(key);
+	else
+	{
+		add_to_env_solo(key, shell);
 	}
 }
 
@@ -78,6 +88,27 @@ t_env	*point_to_env(char *key, t_shell *shell)
 	return (NULL);
 }
 
+void	add_to_env_solo(char *str, t_shell *shell)
+{
+	t_env	*index;
+	char	*s1;
+	char	**s;
+
+	index = NULL;
+	index = point_to_env(str, shell);
+	if (index)
+		return ;
+	s = malloc(sizeof(char *) * 3);
+	s1 = ft_strdup(str);
+	s[0] = s1;
+	s[1] = NULL;
+	s[2] = NULL;
+	index = env_new(s, 1);
+	if (!index)
+		return ;
+	env_add_back(&(shell->env), index);
+}
+
 void	update_env(char *str, t_shell *shell)
 {
 	t_env	*index;
@@ -92,6 +123,7 @@ void	update_env(char *str, t_shell *shell)
 		free(index->content[1]);
 		s = ft_strdup(str + get_equal_position(str) + 1);
 		index->content[1] = s;
+		index->export = 0;
 	}
 	else
 	{
@@ -114,7 +146,7 @@ void	add_to_env(char *str, t_shell *shell)
 	s[0] = s1;
 	s[1] = s2;
 	s[2] = NULL;
-	new = env_new(s);
+	new = env_new(s, 0);
 	if (!new)
 		return ;
 	env_add_back(&(shell->env), new);

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 08:34:24 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 17:49:59 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:58:04 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	env_add_back(t_env **lst, t_env *new)
 	}
 }
 
-t_env	*env_new(char **content)
+t_env	*env_new(char **content, int export)
 {
 	t_env	*node;
 
@@ -52,5 +52,6 @@ t_env	*env_new(char **content)
 	node->content = content;
 	node->next = NULL;
 	node->prev = NULL;
+	node->export = export;
 	return (node);
 }

@@ -6,7 +6,7 @@
 /*   By: mfaoussi <mfaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 08:25:11 by mfaoussi          #+#    #+#             */
-/*   Updated: 2024/05/27 16:55:39 by mfaoussi         ###   ########.fr       */
+/*   Updated: 2024/05/30 20:30:45 by mfaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_env	*ft_get_env(char **env)
 		{
 			str = ft_strdup(env[i]);
 			var_value = ft_split(str, '=');
-			new = env_new(var_value);
+			new = env_new(var_value, 0);
 			env_add_back(&lst, new);
 			free(str);
 			i++;
@@ -51,12 +51,15 @@ void	env(t_env	*env)
 	}
 	while (i)
 	{
-		if (i->content[0])
-			printf("%s=", i->content[0]);
-		if (i->content[1])
-			printf("%s\n", i->content[1]);
-		else
-			printf("\n");
+		if (i->export == 0)
+		{
+			if (i->content[0])
+				printf("%s=", i->content[0]);
+			if (i->content[1])
+				printf("%s\n", i->content[1]);
+			else
+				printf("\n");
+		}
 		i = i->next;
 	}
 }
@@ -81,3 +84,32 @@ void	clean_env(t_shell *shell)
 		}
 	}
 }
+
+void	exp_print(t_env	*env)
+{
+	t_env	*i;
+
+	i = env;
+	if (!i)
+	{
+		printf("no env found\n");
+		return ;
+	}
+	while (i)
+	{
+		if (i->content[0])
+			printf("declare -x %s", i->content[0]);
+		if (i->content[1])
+		{
+			printf("=\"%s\"\n", i->content[1]);
+		}
+		else if (i->export == 0)
+		{
+			printf("=\"\"\n");
+		}
+		else
+			printf("\n");
+		i = i->next;
+	}
+}
+

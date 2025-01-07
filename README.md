@@ -1,12 +1,12 @@
-# 🚀 **Minishell**
+# **Minishell**
 
-## 📚 **Project Overview**
+## **Project Overview**
 
 Minishell is a simplified version of a Unix shell, developed as part of the 42 School curriculum to deepen our understanding of **Parsing**, **process management**, **system calls**, **file descriptors**, and **signal handling** in a Unix-like environment. This shell replicates core functionalities of bash, supporting **commands**, **piping**, **redirections**, **environment variables**, and a few **built-in** commands.
 
 
 
-### ✅ **Key Features**
+### **Key Features**
 1. **CRUD Operations:** Create, Read, Update, and Delete tasks.  
 2. **Database Integration:** Store task data using **PostgreSQL**.  
 3. **Containerization:** Use **Docker** and **Docker Compose** for simplified deployment.  
@@ -14,7 +14,7 @@ Minishell is a simplified version of a Unix shell, developed as part of the 42 S
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Programming Language:** C  
 - **System Calls:** fork, execve, waitpid, pipe, dup2, signal ...
@@ -23,7 +23,7 @@ Minishell is a simplified version of a Unix shell, developed as part of the 42 S
 - **Docker** To test it on different systems
 ---
 
-## ✨ Key Features
+## Key Features
 - **Command Execution:** Supports both built-in and external commands.
 - **Piping:** Ability to chain commands using pipes (|).
 - **Redirections:** Input (<) and output (> and >>) redirection support and heredoc (<<).
@@ -41,9 +41,9 @@ Minishell is a simplified version of a Unix shell, developed as part of the 42 S
   - exit
 - **Error Handling:** Informative error messages for invalid syntax or commands.
 
-## 🛠️ **Setup Instructions **
+##  **Setup Instructions **
 
-### 📑 1. Clone the Repository and compile the project using Makefike
+###  1. Clone the Repository and compile the project using Makefike
 
 
 ```bash
@@ -59,7 +59,7 @@ Run the shell:
 ```
 
 
-### 📝 Usage Examples
+### Usage Examples
 
 ***Basic Commands:***
 
@@ -109,6 +109,6 @@ exit
 
 
 
-**📬 Authors:**
+**Authors:**
 - imad faoussi : https://github.com/Mimadfaoussi
 - Alicja Namięta : https://github.com/namaliii

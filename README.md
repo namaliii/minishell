@@ -5,13 +5,6 @@
 Minishell is a simplified version of a Unix shell, developed as part of the 42 School curriculum to deepen our understanding of **Parsing**, **process management**, **system calls**, **file descriptors**, and **signal handling** in a Unix-like environment. This shell replicates core functionalities of bash, supporting **commands**, **piping**, **redirections**, **environment variables**, and a few **built-in** commands.
 
 
-
-### **Key Features**
-1. **CRUD Operations:** Create, Read, Update, and Delete tasks.  
-2. **Database Integration:** Store task data using **PostgreSQL**.  
-3. **Containerization:** Use **Docker** and **Docker Compose** for simplified deployment.  
-4. **Scalability:** Deploy and scale the application with **Kubernetes**.  
-
 ---
 
 ## Technologies Used

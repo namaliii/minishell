@@ -43,7 +43,7 @@ Minishell is a simplified version of a Unix shell, developed as part of the 42 S
 
 ##  **Setup Instructions **
 
-###  1. Clone the Repository and compile the project using Makefike
+###  Clone the Repository and compile the project using Makefike
 
 
 ```bash

@@ -1,107 +1,37 @@
-# **Minishell**
+# Minishell
 
-## **Project Overview**
+## Introduction
 
-Minishell is a simplified version of a Unix shell, developed as part of the 42 School curriculum to deepen our understanding of **Parsing**, **process management**, **system calls**, **file descriptors**, and **signal handling** in a Unix-like environment. This shell replicates core functionalities of bash, supporting **commands**, **piping**, **redirections**, **environment variables**, and a few **built-in** commands.
+Minishell is a simple shell implementation inspired by Bash. This project focuses on understanding process management, file descriptors, and the fundamental workings of a Unix shell.
 
+## Features
 
----
+- Custom command prompt
+- Command execution with absolute, relative paths, and PATH resolution
+- Built-in commands: `echo`, `cd`, `pwd`, `export`, `unset`, `env`, `exit`
+- Input/output redirections (`<`, `>`, `<<`, `>>`)
+- Pipes (`|`) for command chaining
+- Environment variable handling
+- Signal handling for `Ctrl+C`, `Ctrl+D`, and `Ctrl+\`
 
-## Technologies Used
+## Compilation
 
-- **Programming Language:** C  
-- **System Calls:** fork, execve, waitpid, pipe, dup2, signal ...
-- **Makefile:** for build automation  
-- **Valgrind** (Memory Leak Checker during development)
-- **Docker** To test it on different systems
----
-
-## Key Features
-- **Command Execution:** Supports both built-in and external commands.
-- **Piping:** Ability to chain commands using pipes (|).
-- **Redirections:** Input (<) and output (> and >>) redirection support and heredoc (<<).
-- **Environment Variables:** Access and modify environment variables.
-- **Signal Handling:** Proper handling of Ctrl+C, Ctrl+D, and Ctrl+\.
-- **Built-in Commands:** Implemented commands such as: 
-
-
-  - echo
-  - cd
-  - pwd
-  - export
-  - unset
-  - env
-  - exit
-- **Error Handling:** Informative error messages for invalid syntax or commands.
-
-##  **Setup Instructions **
-
-###  Clone the Repository and compile the project using Makefike
-
-
-```bash
-
-git clone git@github.com:Mimadfaoussi/minishell
-cd minishell
+```sh
 make
 ```
 
-Run the shell:
-```bash
+## Running Minishell
+
+```sh
 ./minishell
 ```
 
+## Contact
 
-### Usage Examples
+For any questions or inquiries, please contact the project authors at:
 
-***Basic Commands:***
+- [anamieta@student.42heilbronn.de](mailto\:anamieta@student.42heilbronn.de)
+- [mfaoussi@student.42heilbronn.de](mailto\:mfaoussi@student.42heilbronn.de)
 
-```bash
-ls -la
-echo "Hello, World!"
-pwd
-```
+**Note:** This repository is part of the 42 school curriculum and contains exercises designed to teach and test various shell-related concepts.
 
-***Piping Commands:***
-
-```bash
-ls | grep minishell
-cat file.txt | wc -l
-```
-
-***Redirections:***
-
-```bash
-echo "Test" > output.txt
-cat < input.txt
-```
-
-***Environment Variables:***
-
-```bash
-export MY_VAR="Hello"
-echo $MY_VAR
-unset MY_VAR
-```
-
-***Built-in Commands:***
-
-```bash
-cd ..
-pwd
-env | grep PATH > path.txt
-exit
-```
-
-
-***Signal Handling:***
-
-- **Ctrl+C →** Stops the current process.
-- **Ctrl+D →** Exits the shell.
-- **Ctrl+\ →** Does nothing if properly handled.
-
-
-
-**Authors:**
-- imad faoussi : https://github.com/Mimadfaoussi
-- Alicja Namięta : https://github.com/namaliii
